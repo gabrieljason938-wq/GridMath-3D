@@ -1,0 +1,6 @@
+{
+  "name": "GRIDMATH 3D",
+  "description": "Numerical Intelligence for Smart Grid Demand Forecasting and Optimal Energy Dispatch",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
