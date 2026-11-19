@@ -78,24 +78,24 @@ export function DashboardPage() {
   return (
     <div className="mx-auto max-w-[1440px] space-y-6">
       {/* Dataset Provenance & Time-Step Control Header */}
-      <section className="flex flex-col justify-between gap-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 lg:flex-row lg:items-center">
+      <section className="flex flex-col justify-between gap-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 lg:flex-row lg:items-center">
         <div className="space-y-1">
-          <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
-            <span className="font-medium text-[#2563EB]">Synthetic Baseline Dataset</span>
+          <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
+            <span className="font-medium text-[#2563EB] dark:text-[#60A5FA]">Synthetic Baseline Dataset</span>
             <span aria-hidden="true">·</span>
             <span>{activeScenario.regionLabel}</span>
             <span aria-hidden="true">·</span>
             <span>{validationReport.valid ? 'Schema Validated' : 'Validation Warning'}</span>
           </div>
-          <h2 className="text-lg font-semibold tracking-tight text-[#0F172A]">
+          <h2 className="text-lg font-semibold tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
             {activeScenario.name}
           </h2>
-          <p className="text-sm text-[#64748B]">{activeScenario.subtitle}</p>
+          <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">{activeScenario.subtitle}</p>
         </div>
 
         {/* Interactive 24-Hour Time Scrubber & Deterministic Playback Controls */}
         <div className="flex flex-wrap items-center gap-2.5">
-          <div className="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1.5">
+          <div className="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-2.5 py-1.5">
             <button
               type="button"
               onClick={() => (isPlaying ? pauseSimulation() : playSimulation())}
@@ -103,13 +103,13 @@ export function DashboardPage() {
               className={`inline-flex h-7 items-center gap-1 rounded-md px-2 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                 isPlaying
                   ? 'bg-[#2563EB] text-white'
-                  : 'bg-[#FFFFFF] text-[#0F172A] border border-[#E2E8F0] hover:bg-slate-50'
+                  : 'bg-[#FFFFFF] dark:bg-[#172033] text-[#0F172A] dark:text-[#F8FAFC] border border-[#E2E8F0] dark:border-[#334155] hover:bg-slate-50 dark:hover:bg-[#1E293B]'
               }`}
             >
               {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
               {isPlaying ? 'Pause' : 'Play'}
             </button>
-            <div className="flex items-center rounded-md border border-[#E2E8F0] bg-[#FFFFFF] p-0.5 text-[11px]">
+            <div className="flex items-center rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-0.5 text-[11px]">
               {SPEED_OPTIONS.map((spd) => (
                 <button
                   key={spd}
@@ -117,8 +117,8 @@ export function DashboardPage() {
                   onClick={() => setPlaybackSpeed(spd)}
                   className={`rounded px-1.5 py-0.5 font-mono-tabular transition-colors ${
                     playbackSpeed === spd
-                      ? 'bg-[#EFF6FF] font-semibold text-[#2563EB]'
-                      : 'text-[#64748B] hover:text-[#0F172A]'
+                      ? 'bg-[#EFF6FF] dark:bg-[#60A5FA]/15 font-semibold text-[#2563EB] dark:text-[#60A5FA]'
+                      : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                   }`}
                 >
                   {spd}×
@@ -129,14 +129,14 @@ export function DashboardPage() {
               type="button"
               onClick={resetSimulation}
               aria-label="Reset digital twin state"
-              className="rounded p-1 text-[#64748B] transition-colors hover:bg-[#FFFFFF] hover:text-[#0F172A]"
+              className="rounded p-1 text-[#64748B] dark:text-[#94A3B8] transition-colors hover:bg-[#FFFFFF] dark:hover:bg-[#172033] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
               title="Reset scenario simulation"
             >
               <RotateCcw className="h-3.5 w-3.5" />
             </button>
           </div>
 
-          <div className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2">
+          <div className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-3 py-2">
             <button
               type="button"
               onClick={() => {
@@ -144,12 +144,12 @@ export function DashboardPage() {
                 stepHour(-1);
               }}
               aria-label="Previous hour"
-              className="rounded p-1 text-[#64748B] transition-colors hover:bg-[#FFFFFF] hover:text-[#0F172A]"
+              className="rounded p-1 text-[#64748B] dark:text-[#94A3B8] transition-colors hover:bg-[#FFFFFF] dark:hover:bg-[#172033] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div className="flex items-center gap-3">
-              <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] whitespace-nowrap">
+              <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] whitespace-nowrap">
                 {activeDispatch.timestampLabel} IST
               </span>
               <input
@@ -172,7 +172,7 @@ export function DashboardPage() {
                 stepHour(1);
               }}
               aria-label="Next hour"
-              className="rounded p-1 text-[#64748B] transition-colors hover:bg-[#FFFFFF] hover:text-[#0F172A]"
+              className="rounded p-1 text-[#64748B] dark:text-[#94A3B8] transition-colors hover:bg-[#FFFFFF] dark:hover:bg-[#172033] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -180,11 +180,11 @@ export function DashboardPage() {
 
           <Link
             to="/smart-city"
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3.5 text-xs font-medium text-[#0F172A] transition-colors hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] transition-colors hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
           >
-            <Layers className="h-3.5 w-3.5 text-[#2563EB]" />
+            <Layers className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
             Full 3D Twin
-            <ArrowUpRight className="h-3.5 w-3.5 text-[#64748B]" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-[#64748B] dark:text-[#94A3B8]" />
           </Link>
         </div>
       </section>
@@ -241,17 +241,17 @@ export function DashboardPage() {
       {/* Hero Stage: Interactive 3D Smart City Preview + Subsystem Status Column */}
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         {/* Large Interactive 3D Smart City Preview */}
-        <div className="flex flex-col rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-8">
+        <div className="flex flex-col rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-8">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-base font-semibold text-[#0F172A]">
+              <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 Smart City Architectural Twin Preview
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 Drag to orbit · Scroll to zoom · Click substations or districts to inspect live load &amp; generation
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-3 text-xs text-[#64748B]">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-[#64748B] dark:text-[#94A3B8]">
               <span className="inline-flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-[#10B981]" />
                 Renewable Feed
@@ -267,7 +267,7 @@ export function DashboardPage() {
               <div
                 role="group"
                 aria-label="Preview Weather and Time Mode"
-                className="flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-0.5 text-[11px]"
+                className="flex items-center rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-0.5 text-[11px]"
               >
                 {ENVIRONMENT_OPTIONS.map(({ id, label, Icon }) => (
                   <button
@@ -277,8 +277,8 @@ export function DashboardPage() {
                     onClick={() => setEnvironmentMode(id)}
                     className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 font-medium transition-colors whitespace-nowrap shrink-0 ${
                       environmentMode === id
-                        ? 'bg-[#FFFFFF] font-semibold text-[#2563EB] shadow-xs'
-                        : 'text-[#64748B] hover:text-[#0F172A]'
+                        ? 'bg-[#FFFFFF] dark:bg-[#172033] font-semibold text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                        : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                     }`}
                   >
                     <Icon className="h-3 w-3" />
@@ -289,7 +289,7 @@ export function DashboardPage() {
               <div
                 role="group"
                 aria-label="3D Viewport Quality"
-                className="flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-0.5 text-[11px]"
+                className="flex items-center rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-0.5 text-[11px]"
               >
                 {QUALITY_OPTIONS.map((q) => (
                   <button
@@ -299,8 +299,8 @@ export function DashboardPage() {
                     onClick={() => setRenderQuality(q.id)}
                     className={`rounded px-1.5 py-0.5 font-medium transition-colors whitespace-nowrap shrink-0 ${
                       renderQuality === q.id
-                        ? 'bg-[#FFFFFF] font-semibold text-[#2563EB] shadow-xs'
-                        : 'text-[#64748B] hover:text-[#0F172A]'
+                        ? 'bg-[#FFFFFF] dark:bg-[#172033] font-semibold text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                        : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                     }`}
                   >
                     {q.label}
@@ -322,7 +322,7 @@ export function DashboardPage() {
           />
 
           {/* Selected 3D Zone Inspection Bar */}
-          <div className="mt-4 border-t border-[#E2E8F0] pt-3.5">
+          <div className="mt-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-3.5">
             {selectedNode ? (
               <SelectedZoneInspector
                 zoneId={selectedNode.id}
@@ -332,7 +332,7 @@ export function DashboardPage() {
                 variant="inline"
               />
             ) : (
-              <span className="text-xs text-[#64748B]">
+              <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 No 3D zone selected — click any building cluster, hospital, turbine, solar array, BESS bank, or substation in the orthographic isometric viewport.
               </span>
             )}
@@ -341,78 +341,78 @@ export function DashboardPage() {
 
         {/* Subsystem Status & Live Fleet Summary */}
         <div className="flex flex-col gap-4 xl:col-span-4">
-          <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+          <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-[#64748B]">Grid Balance Status</span>
+              <span className="text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">Grid Balance Status</span>
               <StatusBadge tone={balanceTone} label={activeDispatch.balanceStatus} />
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-4 border-t border-[#E2E8F0] pt-3 text-xs">
+            <div className="mt-3 grid grid-cols-2 gap-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs">
               <div>
-                <p className="text-[#64748B]">Dispatched Supply</p>
-                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#0F172A]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">Dispatched Supply</p>
+                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {activeDispatch.totalDispatchedGenerationMW.toFixed(1)} MW
                 </p>
               </div>
               <div>
-                <p className="text-[#64748B]">BESS Net Power</p>
-                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#0F172A]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">BESS Net Power</p>
+                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {activeDispatch.batteryNetPowerMW >= 0 ? '+' : ''}
                   {activeDispatch.batteryNetPowerMW.toFixed(1)} MW
                 </p>
               </div>
               <div>
-                <p className="text-[#64748B]">BESS Energy SoC</p>
-                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#06B6D4]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">BESS Energy SoC</p>
+                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#06B6D4] dark:text-[#22D3EE]">
                   {activeDispatch.batterySocMWh.toFixed(1)} MWh ({activeDispatch.batterySocPercent.toFixed(0)}%)
                 </p>
               </div>
               <div>
-                <p className="text-[#64748B]">Unserved Load</p>
-                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#0F172A]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">Unserved Load</p>
+                <p className="mt-0.5 font-mono-tabular text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {activeDispatch.unservedEnergyMW.toFixed(2)} MW
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+          <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-[#64748B]">Forecasting Model Status</span>
+              <span className="text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">Forecasting Model Status</span>
               <StatusBadge tone="info" label={forecastResult.modelStatus} />
             </div>
-            <p className="mt-2 text-sm font-semibold text-[#0F172A]">{forecastResult.modelName}</p>
-            <div className="mt-3 grid grid-cols-3 gap-3 border-t border-[#E2E8F0] pt-3 text-xs">
+            <p className="mt-2 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{forecastResult.modelName}</p>
+            <div className="mt-3 grid grid-cols-3 gap-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs">
               <div>
-                <p className="text-[#64748B]">MAPE</p>
-                <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">MAPE</p>
+                <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {forecastResult.mapePercent.toFixed(2)}%
                 </p>
               </div>
               <div>
-                <p className="text-[#64748B]">RMSE</p>
-                <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">RMSE</p>
+                <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {forecastResult.rmseMW.toFixed(1)} MW
                 </p>
               </div>
               <div>
-                <p className="text-[#64748B]">R² Fit</p>
-                <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A]">
+                <p className="text-[#64748B] dark:text-[#94A3B8]">R² Fit</p>
+                <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {forecastResult.rSquared.toFixed(3)}
                 </p>
               </div>
             </div>
             <Link
               to="/forecasting"
-              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline"
             >
               Inspect Forecasting Lab
               <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
-          <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+          <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-[#64748B]">Numerical Solver Status</span>
+              <span className="text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">Numerical Solver Status</span>
               <StatusBadge
                 tone={
                   activeDispatch.solverStatus === 'Constraint Infeasible'
@@ -424,23 +424,23 @@ export function DashboardPage() {
                 label={activeDispatch.solverStatus}
               />
             </div>
-            <p className="mt-2 text-sm font-semibold text-[#0F172A]">{activeDispatch.solverName}</p>
-            <p className="mt-1 text-xs leading-relaxed text-[#64748B]">
+            <p className="mt-2 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{activeDispatch.solverName}</p>
+            <p className="mt-1 text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
               Multi-period 24h Two-Phase Bounded Simplex LP ({dispatchBundle.numVariables} vars ×{' '}
               {dispatchBundle.numConstraints} eqs) converged in {lastComputeMs} ms · Max balance residual{' '}
               {dispatchBundle.residualSummary.maxPowerBalanceResidualMW.toExponential(1)} MW.
             </p>
-            <div className="mt-3 flex items-center gap-4 border-t border-[#E2E8F0] pt-3 text-xs">
+            <div className="mt-3 flex items-center gap-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs">
               <Link
                 to="/dispatch"
-                className="inline-flex items-center gap-1 font-medium text-[#2563EB] hover:underline"
+                className="inline-flex items-center gap-1 font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline"
               >
                 Dispatch Matrix
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 to="/experiments"
-                className="inline-flex items-center gap-1 font-medium text-[#2563EB] hover:underline"
+                className="inline-flex items-center gap-1 font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline"
               >
                 Scenario Controls
                 <ArrowUpRight className="h-3.5 w-3.5" />
@@ -451,17 +451,17 @@ export function DashboardPage() {
       </section>
 
       {/* 24-Hour Load & Generation Profile */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               24-Hour Demand &amp; Generation Trajectory
             </h3>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
               Click any hourly column to synchronize KPIs and the 3D digital twin to that time step
             </p>
           </div>
-          <span className="font-mono-tabular text-xs text-[#64748B]">
+          <span className="font-mono-tabular text-xs text-[#64748B] dark:text-[#94A3B8]">
             Daily Energy: {daySummary.totalDailyEnergyMWh.toFixed(1)} MWh · Avg RE:{' '}
             {daySummary.averageRenewableSharePercent.toFixed(1)}%
           </span>

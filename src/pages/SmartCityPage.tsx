@@ -155,7 +155,7 @@ export function SmartCityPage() {
 
   return (
     <div className="mx-auto max-w-[1440px]">
-      <div className="relative h-[calc(100vh-9.5rem)] min-h-[600px] w-full overflow-hidden rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
+      <div className="relative h-[calc(100vh-9.5rem)] min-h-[600px] w-full overflow-hidden rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220]">
         {/* Full-Viewport Orthographic Isometric 3D Scene */}
         <SmartCityViewport
           dispatch={activeDispatch}
@@ -174,16 +174,16 @@ export function SmartCityPage() {
 
         {/* Compact Top-Left Telemetry Strip + Dynamic Weather & Time Selector */}
         <div className="pointer-events-auto absolute top-3 left-3 z-20 flex max-w-[calc(100%-1.5rem)] flex-col items-start gap-1.5">
-          <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF]/95 px-3 py-1.5 shadow-[0_6px_20px_-6px_rgba(15,23,42,0.10)]">
+          <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF]/95 dark:bg-[#172033]/95 px-3 py-1.5 shadow-[0_6px_20px_-6px_rgba(15,23,42,0.10)]">
             <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px]">
-              <span className="font-semibold text-[#0F172A]">{activeScenario.name}</span>
+              <span className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{activeScenario.name}</span>
               <span aria-hidden="true" className="text-[#CBD5E1]">
                 ·
               </span>
-              <span className="font-mono-tabular font-semibold text-[#2563EB]">
+              <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                 {activeDispatch.timestampLabel}
               </span>
-              <span className="text-[#64748B]">
+              <span className="text-[#64748B] dark:text-[#94A3B8]">
                 (
                 {activeModeMeta.label}
                 {(environmentMode === 'cloudy' || environmentMode === 'rainy') &&
@@ -199,19 +199,19 @@ export function SmartCityPage() {
               <span aria-hidden="true" className="text-[#CBD5E1]">
                 ·
               </span>
-              <span className="font-mono-tabular text-[#334155]">
+              <span className="font-mono-tabular text-[#334155] dark:text-[#CBD5E1]">
                 Load {activeDispatch.totalDemandMW.toFixed(1)} MW
               </span>
               <span aria-hidden="true" className="text-[#CBD5E1]">
                 ·
               </span>
-              <span className="font-mono-tabular text-[#334155]">
+              <span className="font-mono-tabular text-[#334155] dark:text-[#CBD5E1]">
                 BESS {activeDispatch.batterySocPercent.toFixed(0)}%
               </span>
               <span aria-hidden="true" className="text-[#CBD5E1]">
                 ·
               </span>
-              <span className="font-mono-tabular text-[#334155]">
+              <span className="font-mono-tabular text-[#334155] dark:text-[#CBD5E1]">
                 {activeHourlyDemand.temperatureDegC.toFixed(1)}°C
               </span>
               <span aria-hidden="true" className="text-[#CBD5E1]">
@@ -230,7 +230,7 @@ export function SmartCityPage() {
                   <span aria-hidden="true" className="text-[#CBD5E1]">
                     ·
                   </span>
-                  <span className="font-medium text-[#2563EB]">Weather Perturbed</span>
+                  <span className="font-medium text-[#2563EB] dark:text-[#60A5FA]">Weather Perturbed</span>
                 </>
               ) : null}
             </div>
@@ -240,7 +240,7 @@ export function SmartCityPage() {
           <div
             role="group"
             aria-label="Weather and Time of Day Simulation Mode"
-            className="flex flex-wrap items-center gap-1 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF]/95 p-1 shadow-[0_6px_20px_-6px_rgba(15,23,42,0.10)]"
+            className="flex flex-wrap items-center gap-1 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF]/95 dark:bg-[#172033]/95 p-1 shadow-[0_6px_20px_-6px_rgba(15,23,42,0.10)]"
           >
             {ENVIRONMENT_MODES.map(({ id, label, Icon }) => {
               const active = environmentMode === id;
@@ -254,7 +254,7 @@ export function SmartCityPage() {
                   className={`inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                     active
                       ? 'bg-[#2563EB] text-white shadow-xs'
-                      : 'text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]'
+                      : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                   }`}
                 >
                   <Icon className="h-3 w-3" />
@@ -265,7 +265,7 @@ export function SmartCityPage() {
 
             {environmentMode === 'rainy' ? (
               <>
-                <span aria-hidden="true" className="mx-0.5 h-3.5 w-px bg-[#E2E8F0]" />
+                <span aria-hidden="true" className="mx-0.5 h-3.5 w-px bg-[#E2E8F0] dark:bg-[#334155]" />
                 <button
                   type="button"
                   aria-pressed={stormAudioEnabled}
@@ -275,7 +275,7 @@ export function SmartCityPage() {
                   className={`inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                     stormAudioEnabled
                       ? 'bg-[#0F172A] text-white shadow-xs'
-                      : 'text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]'
+                      : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                   }`}
                 >
                   {stormAudioEnabled ? (
@@ -309,13 +309,13 @@ export function SmartCityPage() {
             <button
               type="button"
               onClick={() => setDockCollapsed(false)}
-              className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF]/95 px-3 py-1.5 text-xs font-medium text-[#0F172A] shadow-[0_6px_20px_-6px_rgba(15,23,42,0.12)] transition-colors hover:border-[#2563EB]"
+              className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF]/95 dark:bg-[#172033]/95 px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] shadow-[0_6px_20px_-6px_rgba(15,23,42,0.12)] transition-colors hover:border-[#2563EB] dark:hover:border-[#60A5FA]"
             >
-              <ChevronUp className="h-3.5 w-3.5 text-[#2563EB]" />
+              <ChevronUp className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
               Controls
             </button>
           ) : (
-            <div className="pointer-events-auto relative flex max-w-full flex-wrap items-center justify-center gap-2 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF]/95 px-2.5 py-1.5 shadow-[0_8px_24px_-6px_rgba(15,23,42,0.10)]">
+            <div className="pointer-events-auto relative flex max-w-full flex-wrap items-center justify-center gap-2 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF]/95 dark:bg-[#172033]/95 px-2.5 py-1.5 shadow-[0_8px_24px_-6px_rgba(15,23,42,0.10)]">
               {/* Camera Viewpoints */}
               <div className="flex flex-wrap items-center gap-0.5">
                 {CAMERA_LABELS.map((item) => (
@@ -326,7 +326,7 @@ export function SmartCityPage() {
                     className={`rounded-md px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                       cameraPreset === item.id
                         ? 'bg-[#2563EB] text-white'
-                        : 'text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]'
+                        : 'text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                     }`}
                   >
                     {item.label}
@@ -334,7 +334,7 @@ export function SmartCityPage() {
                 ))}
               </div>
 
-              <span aria-hidden="true" className="hidden h-4 w-px bg-[#E2E8F0] xl:block" />
+              <span aria-hidden="true" className="hidden h-4 w-px bg-[#E2E8F0] dark:bg-[#334155] xl:block" />
 
               {/* Playback, Speed & Timeline Scrubber */}
               <div className="flex items-center gap-1.5">
@@ -344,15 +344,15 @@ export function SmartCityPage() {
                   aria-label={isPlaying ? 'Pause simulation' : 'Play simulation'}
                   className={`inline-flex h-6 items-center gap-1 rounded-md border px-2 text-[11px] font-medium whitespace-nowrap shrink-0 ${
                     isPlaying
-                      ? 'border-[#2563EB] bg-[#EFF6FF] text-[#2563EB]'
-                      : 'border-[#E2E8F0] bg-[#F8FAFC] text-[#0F172A] hover:bg-slate-100'
+                      ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#EFF6FF] dark:bg-[#60A5FA]/15 text-[#2563EB] dark:text-[#60A5FA]'
+                      : 'border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-slate-100 dark:hover:bg-[#1E293B]'
                   }`}
                 >
                   {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
                   {isPlaying ? 'Pause' : 'Play'}
                 </button>
 
-                <div className="flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-0.5 text-[10px]">
+                <div className="flex items-center rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-0.5 text-[10px]">
                   {SPEED_OPTIONS.map((spd) => (
                     <button
                       key={spd}
@@ -360,8 +360,8 @@ export function SmartCityPage() {
                       onClick={() => setPlaybackSpeed(spd)}
                       className={`rounded px-1.5 py-0.5 font-mono-tabular transition-colors ${
                         playbackSpeed === spd
-                          ? 'bg-[#FFFFFF] font-semibold text-[#2563EB] shadow-xs'
-                          : 'text-[#64748B] hover:text-[#0F172A]'
+                          ? 'bg-[#FFFFFF] dark:bg-[#172033] font-semibold text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                          : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                       }`}
                     >
                       {spd}×
@@ -369,7 +369,7 @@ export function SmartCityPage() {
                   ))}
                 </div>
 
-                <span className="font-mono-tabular text-[11px] font-medium text-[#0F172A] whitespace-nowrap">
+                <span className="font-mono-tabular text-[11px] font-medium text-[#0F172A] dark:text-[#F8FAFC] whitespace-nowrap">
                   {activeDispatch.timestampLabel}
                 </span>
                 <input
@@ -386,7 +386,7 @@ export function SmartCityPage() {
                 />
               </div>
 
-              <span aria-hidden="true" className="hidden h-4 w-px bg-[#E2E8F0] xl:block" />
+              <span aria-hidden="true" className="hidden h-4 w-px bg-[#E2E8F0] dark:bg-[#334155] xl:block" />
 
               {/* Compact Layer Toggles, Zone Picker Popover, Quality & Reset */}
               <div className="flex flex-wrap items-center gap-1">
@@ -397,8 +397,8 @@ export function SmartCityPage() {
                     onClick={() => setZonesMenuOpen((v) => !v)}
                     className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                       selectedNodeId || zonesMenuOpen
-                        ? 'border-[#2563EB]/40 bg-[#EFF6FF] text-[#2563EB]'
-                        : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#475569] hover:text-[#0F172A]'
+                        ? 'border-[#2563EB]/40 bg-[#EFF6FF] dark:bg-[#60A5FA]/15 text-[#2563EB] dark:text-[#60A5FA]'
+                        : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#475569] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                     }`}
                   >
                     <Layers className="h-3 w-3" />
@@ -409,7 +409,7 @@ export function SmartCityPage() {
                     <div
                       role="menu"
                       aria-label="Select 3D Infrastructure Zone"
-                      className="absolute right-0 bottom-9 z-30 w-56 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-1.5 shadow-[0_12px_32px_-8px_rgba(15,23,42,0.16)]"
+                      className="absolute right-0 bottom-9 z-30 w-56 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-1.5 shadow-[0_12px_32px_-8px_rgba(15,23,42,0.16)]"
                     >
                       {CITY_NODE_CATALOG.map((node) => {
                         const isActive = selectedNodeId === node.id;
@@ -425,7 +425,7 @@ export function SmartCityPage() {
                             className={`flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-[11px] transition-colors ${
                               isActive
                                 ? 'bg-[#2563EB] font-medium text-white'
-                                : 'text-[#334155] hover:bg-[#F8FAFC] hover:text-[#0F172A]'
+                                : 'text-[#334155] dark:text-[#CBD5E1] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                             }`}
                           >
                             <span className="truncate">{node.label.split(' (')[0]}</span>
@@ -449,8 +449,8 @@ export function SmartCityPage() {
                   onClick={() => setShowFlowVectors((v) => !v)}
                   className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                     showFlowVectors
-                      ? 'border-[#06B6D4]/40 bg-[#06B6D4]/10 text-[#0F172A]'
-                      : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B]'
+                      ? 'border-[#06B6D4]/40 bg-[#06B6D4]/10 text-[#0F172A] dark:text-[#F8FAFC]'
+                      : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#64748B] dark:text-[#94A3B8]'
                   }`}
                 >
                   {showFlowVectors ? (
@@ -467,8 +467,8 @@ export function SmartCityPage() {
                   onClick={() => setShowLabels((v) => !v)}
                   className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                     showLabels
-                      ? 'border-[#2563EB]/40 bg-[#2563EB]/10 text-[#0F172A]'
-                      : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B]'
+                      ? 'border-[#2563EB]/40 bg-[#2563EB]/10 text-[#0F172A] dark:text-[#F8FAFC]'
+                      : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#64748B] dark:text-[#94A3B8]'
                   }`}
                 >
                   Labels
@@ -480,8 +480,8 @@ export function SmartCityPage() {
                   onClick={() => setShowLandscaping((v) => !v)}
                   className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors whitespace-nowrap shrink-0 ${
                     showLandscaping
-                      ? 'border-[#10B981]/40 bg-[#10B981]/10 text-[#0F172A]'
-                      : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B]'
+                      ? 'border-[#10B981]/40 bg-[#10B981]/10 text-[#0F172A] dark:text-[#F8FAFC]'
+                      : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#64748B] dark:text-[#94A3B8]'
                   }`}
                 >
                   <Trees className="h-3 w-3" />
@@ -491,7 +491,7 @@ export function SmartCityPage() {
                 <div
                   role="group"
                   aria-label="3D Rendering Quality"
-                  className="flex items-center rounded-md border border-[#E2E8F0] bg-[#F8FAFC] p-0.5 text-[10px]"
+                  className="flex items-center rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-0.5 text-[10px]"
                 >
                   {QUALITY_OPTIONS.map((q) => (
                     <button
@@ -501,8 +501,8 @@ export function SmartCityPage() {
                       onClick={() => setRenderQuality(q.id)}
                       className={`rounded px-1.5 py-0.5 font-medium transition-colors whitespace-nowrap shrink-0 ${
                         renderQuality === q.id
-                          ? 'bg-[#FFFFFF] font-semibold text-[#2563EB] shadow-xs'
-                          : 'text-[#64748B] hover:text-[#0F172A]'
+                          ? 'bg-[#FFFFFF] dark:bg-[#172033] font-semibold text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                          : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                       }`}
                     >
                       {q.label}
@@ -518,7 +518,7 @@ export function SmartCityPage() {
                     setZonesMenuOpen(false);
                   }}
                   aria-label="Reset digital twin and camera view"
-                  className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-1 text-[11px] font-medium text-[#64748B] hover:text-[#0F172A] whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-2 py-1 text-[11px] font-medium text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] whitespace-nowrap shrink-0"
                 >
                   <RotateCcw className="h-3 w-3" />
                   Reset
@@ -531,7 +531,7 @@ export function SmartCityPage() {
                     setDockCollapsed(true);
                   }}
                   aria-label="Hide control toolbar"
-                  className="inline-flex items-center rounded-md border border-[#E2E8F0] bg-[#FFFFFF] p-1 text-[#64748B] hover:text-[#0F172A]"
+                  className="inline-flex items-center rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-1 text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                 >
                   <ChevronDown className="h-3.5 w-3.5" />
                 </button>

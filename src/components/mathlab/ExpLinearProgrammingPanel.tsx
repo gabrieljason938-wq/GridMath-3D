@@ -146,9 +146,9 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
   return (
     <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
       {/* Left LP Formulation Controls */}
-      <div className="space-y-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-4">
+      <div className="space-y-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-[#0F172A]">Simplex Dispatch Problem</h3>
+          <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Simplex Dispatch Problem</h3>
           <button
             type="button"
             onClick={() => {
@@ -156,14 +156,14 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
               setStepIdx(0);
               setPlaying(false);
             }}
-            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] hover:underline whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline whitespace-nowrap shrink-0"
           >
             <RotateCcw className="h-3 w-3" />
             Reset
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-1.5 rounded-lg bg-[#F8FAFC] p-1">
+        <div className="grid grid-cols-2 gap-1.5 rounded-lg bg-[#F8FAFC] dark:bg-[#0B1220] p-1">
           <button
             type="button"
             onClick={() => {
@@ -173,8 +173,8 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
             }}
             className={`rounded-md py-1.5 text-xs font-medium transition-colors whitespace-nowrap ${
               dimension === 2
-                ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
             }`}
           >
             2-Var Polygon LP
@@ -188,8 +188,8 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
             }}
             className={`rounded-md py-1.5 text-xs font-medium transition-colors whitespace-nowrap ${
               dimension === 3
-                ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
             }`}
           >
             3-Var Polyhedron LP
@@ -197,17 +197,17 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs font-medium text-[#64748B]">Objective Cost Coefficients (INR/MWh)</p>
+          <p className="text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">Objective Cost Coefficients (INR/MWh)</p>
           <div className={`grid gap-2 ${dimension === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
             {spec.objectiveCoeffs.map((coeff, i) => (
-              <label key={i} className="block text-[11px] text-[#64748B]">
+              <label key={i} className="block text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                 <span className="truncate block">{spec.variableNames[i]}</span>
                 <input
                   type="number"
                   step={100}
                   value={coeff}
                   onChange={(e) => updateObjective(i, Number(e.target.value) || 0)}
-                  className="mt-1 w-full rounded border border-[#E2E8F0] px-2 py-1 font-mono-tabular text-xs text-[#0F172A]"
+                  className="mt-1 w-full rounded border border-[#E2E8F0] dark:border-[#334155] px-2 py-1 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 />
               </label>
             ))}
@@ -215,20 +215,20 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs font-medium text-[#64748B]">Constraint Bounds (RHS)</p>
+          <p className="text-xs font-medium text-[#64748B] dark:text-[#94A3B8]">Constraint Bounds (RHS)</p>
           <div className="max-h-44 space-y-1.5 overflow-y-auto pr-1">
             {spec.constraints.map((c, idx) => (
               <label
                 key={c.id}
-                className="flex items-center justify-between gap-2 rounded-lg border border-[#E2E8F0] px-2.5 py-1.5 text-xs"
+                className="flex items-center justify-between gap-2 rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1.5 text-xs"
               >
-                <span className="truncate text-[#0F172A]">{c.label}</span>
+                <span className="truncate text-[#0F172A] dark:text-[#F8FAFC]">{c.label}</span>
                 <input
                   type="number"
                   step={5}
                   value={c.rhs}
                   onChange={(e) => updateRhs(idx, Number(e.target.value) || 0)}
-                  className="w-20 shrink-0 rounded border border-[#E2E8F0] px-2 py-0.5 text-right font-mono-tabular text-xs text-[#2563EB]"
+                  className="w-20 shrink-0 rounded border border-[#E2E8F0] dark:border-[#334155] px-2 py-0.5 text-right font-mono-tabular text-xs text-[#2563EB] dark:text-[#60A5FA]"
                 />
               </label>
             ))}
@@ -247,12 +247,12 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
             setCustomSpec(infeasibleSpec);
             setStepIdx(0);
           }}
-          className="w-full rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5 text-xs font-medium text-[#64748B] hover:text-[#0F172A]"
+          className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-3 py-1.5 text-xs font-medium text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
         >
           Test Infeasible Demand Detection
         </button>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
           <div className="flex items-center gap-1">
             <button
               type="button"
@@ -261,7 +261,7 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
                 setStepIdx((s) => Math.max(0, s - 1));
               }}
               aria-label="Previous Simplex step"
-              className="rounded border border-[#E2E8F0] p-1.5 text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="rounded border border-[#E2E8F0] dark:border-[#334155] p-1.5 text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               <StepBack className="h-3.5 w-3.5" />
             </button>
@@ -269,7 +269,7 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
               type="button"
               onClick={() => setPlaying((p) => !p)}
               disabled={!result.feasible}
-              className="inline-flex items-center gap-1 rounded border border-[#E2E8F0] px-2.5 py-1 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] disabled:opacity-50 whitespace-nowrap"
+              className="inline-flex items-center gap-1 rounded border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] disabled:opacity-50 whitespace-nowrap"
             >
               {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
               {playing ? 'Pause' : 'Play Path'}
@@ -281,12 +281,12 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
                 setStepIdx((s) => Math.min(totalSteps - 1, s + 1));
               }}
               aria-label="Next Simplex step"
-              className="rounded border border-[#E2E8F0] p-1.5 text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="rounded border border-[#E2E8F0] dark:border-[#334155] p-1.5 text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               <StepForward className="h-3.5 w-3.5" />
             </button>
           </div>
-          <span className="font-mono-tabular text-xs text-[#64748B]">
+          <span className="font-mono-tabular text-xs text-[#64748B] dark:text-[#94A3B8]">
             Iter {clampedIdx + 1}/{totalSteps}
           </span>
         </div>
@@ -294,22 +294,22 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
         <button
           type="button"
           onClick={() => onExport('linear-programming-simplex.json', { spec, result })}
-          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
         >
-          <Download className="h-3.5 w-3.5 text-[#2563EB]" />
+          <Download className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
           Export Simplex Solution
         </button>
       </div>
 
       {/* Center Formula & 3D Polytope Visualization */}
       <div className="space-y-4 xl:col-span-8">
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="text-sm font-semibold text-[#0F172A]">
+              <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 1. Mathematical Formula — Two-Phase Simplex Linear Programming
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 Exact Two-Phase Simplex computes optimal dispatch <KaTeXFormula tex="\mathbf{x}^*" />; the 3D viewport renders the feasible {dimension === 2 ? 'polygon & cost plane' : 'polyhedron'} and Simplex vertex path.
               </p>
             </div>
@@ -322,7 +322,7 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
               }
             />
           </div>
-          <div className="mt-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+          <div className="mt-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3">
             <KaTeXFormula
               displayMode
               tex="\min_{\mathbf{x} \ge 0} \; Z = \mathbf{c}^T \mathbf{x} \quad \text{subject to} \quad A\mathbf{x} \lesseqgtr \mathbf{b}, \quad \bar{c}_j = c_j - \mathbf{c}_B^T B^{-1} \mathbf{a}_j \ge 0"
@@ -344,8 +344,8 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
       </div>
 
       {/* Step-by-Step Simplex Vertex Log & Constraint Verification */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-5">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-5">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           2. Step-by-Step Simplex Vertex Traversal
         </h3>
         <div className="mt-3 max-h-56 space-y-1.5 overflow-y-auto text-xs">
@@ -359,31 +359,31 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
               }}
               className={`w-full rounded-lg border px-3 py-2 text-left transition-colors ${
                 s.iteration === clampedIdx
-                  ? 'border-[#2563EB] bg-[#2563EB]/6 text-[#0F172A]'
-                  : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B] hover:bg-[#F8FAFC]'
+                  ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#2563EB]/6 text-[#0F172A] dark:text-[#F8FAFC]'
+                  : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
               }`}
             >
               <div className="flex items-center justify-between font-mono-tabular">
-                <span className="font-semibold text-[#0F172A]">
+                <span className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   Iter {s.iteration}: ({s.vertex.map((v) => v.toFixed(1)).join(', ')})
                 </span>
-                <span className="text-[#2563EB]">₹{s.objectiveValue.toFixed(0)}</span>
+                <span className="text-[#2563EB] dark:text-[#60A5FA]">₹{s.objectiveValue.toFixed(0)}</span>
               </div>
-              <p className="mt-0.5 text-[11px] text-[#64748B]">{s.note}</p>
+              <p className="mt-0.5 text-[11px] text-[#64748B] dark:text-[#94A3B8]">{s.note}</p>
             </button>
           ))}
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-7">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-7">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           4. Constraint Residuals &amp; Active (Binding) Verification
         </h3>
         {result.feasible && result.bounded ? (
           <div className="mt-3 overflow-x-auto">
             <table className="w-full border-collapse text-right text-xs font-mono-tabular">
               <thead>
-                <tr className="border-b border-[#E2E8F0] font-sans text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] font-sans text-[#64748B] dark:text-[#94A3B8]">
                   <th className="py-1.5 text-left font-medium">Constraint</th>
                   <th className="py-1.5 font-medium">LHS(x*)</th>
                   <th className="py-1.5 font-medium">Op</th>
@@ -392,14 +392,14 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
                   <th className="py-1.5 text-left pl-3 font-medium">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 {result.constraintResiduals.map((cr) => (
                   <tr key={cr.id}>
-                    <td className="py-1.5 text-left font-sans text-[#0F172A]">{cr.label}</td>
-                    <td className="py-1.5 text-[#0F172A]">{cr.lhsValue.toFixed(precision)}</td>
-                    <td className="py-1.5 text-[#64748B]">{cr.op}</td>
-                    <td className="py-1.5 text-[#64748B]">{cr.rhs.toFixed(2)}</td>
-                    <td className="py-1.5 text-[#2563EB]">
+                    <td className="py-1.5 text-left font-sans text-[#0F172A] dark:text-[#F8FAFC]">{cr.label}</td>
+                    <td className="py-1.5 text-[#0F172A] dark:text-[#F8FAFC]">{cr.lhsValue.toFixed(precision)}</td>
+                    <td className="py-1.5 text-[#64748B] dark:text-[#94A3B8]">{cr.op}</td>
+                    <td className="py-1.5 text-[#64748B] dark:text-[#94A3B8]">{cr.rhs.toFixed(2)}</td>
+                    <td className="py-1.5 text-[#2563EB] dark:text-[#60A5FA]">
                       {cr.slackOrResidual.toFixed(precision)}
                     </td>
                     <td className="py-1.5 pl-3 text-left font-sans">
@@ -414,7 +414,7 @@ export function ExpLinearProgrammingPanel({ datasetMode, precision, onExport }: 
             </table>
           </div>
         ) : (
-          <div className="mt-3 rounded-lg border border-rose-200 bg-rose-50 p-3 text-xs text-rose-700">
+          <div className="mt-3 rounded-lg border border-rose-200 dark:border-rose-500/30 bg-rose-50 dark:bg-rose-950/40 p-3 text-xs text-rose-700 dark:text-rose-300">
             No feasible solution exists under the current constraint set ({result.status}). Reduce demand RHS or relax capacity/emissions caps.
           </div>
         )}

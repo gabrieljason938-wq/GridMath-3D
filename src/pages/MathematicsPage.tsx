@@ -95,17 +95,17 @@ export function MathematicsPage() {
   return (
     <div className="mx-auto max-w-[1440px] space-y-5">
       {/* Scientific Workspace Toolbar */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] text-[#2563EB]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] text-[#2563EB] dark:text-[#60A5FA]">
               <Calculator className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-[#0F172A]">
+              <h2 className="text-lg font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 Numerical Mathematics Laboratory
               </h2>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 Synchronized KaTeX derivations, step-by-step numerical algorithms, interactive 3D mathematical geometry, and error validation.
               </p>
             </div>
@@ -113,14 +113,14 @@ export function MathematicsPage() {
 
           {/* Shared Controls: Dataset & Precision */}
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-1 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-1">
+            <div className="flex items-center gap-1 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-1">
               <button
                 type="button"
                 onClick={() => setDatasetMode('microgrid')}
                 className={`rounded-md px-3 py-1 text-xs font-medium transition-colors whitespace-nowrap ${
                   datasetMode === 'microgrid'
-                    ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                    : 'text-[#64748B] hover:text-[#0F172A]'
+                    ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                 }`}
               >
                 Active Microgrid Scenario
@@ -130,21 +130,21 @@ export function MathematicsPage() {
                 onClick={() => setDatasetMode('benchmark')}
                 className={`rounded-md px-3 py-1 text-xs font-medium transition-colors whitespace-nowrap ${
                   datasetMode === 'benchmark'
-                    ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                    : 'text-[#64748B] hover:text-[#0F172A]'
+                    ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                 }`}
               >
                 Analytical Benchmark
               </button>
             </div>
 
-            <label className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 text-xs text-[#64748B]">
+            <label className="flex items-center gap-2 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 py-1.5 text-xs text-[#64748B] dark:text-[#94A3B8]">
               <span>Precision</span>
               <select
                 value={precision}
                 onChange={(e) => setPrecision(Number(e.target.value))}
                 aria-label="Decimal precision"
-                className="bg-transparent font-mono-tabular font-semibold text-[#0F172A] focus:outline-none"
+                className="bg-transparent font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC] focus:outline-none"
               >
                 <option value={2}>2 dec</option>
                 <option value={4}>4 dec</option>
@@ -165,21 +165,21 @@ export function MathematicsPage() {
                 onClick={() => setActiveExp(exp.id)}
                 className={`rounded-lg border px-3 py-2.5 text-left transition-colors ${
                   selected
-                    ? 'border-[#2563EB] bg-[#2563EB]/6'
-                    : 'border-[#E2E8F0] bg-[#FFFFFF] hover:bg-[#F8FAFC]'
+                    ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#2563EB]/6'
+                    : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                 }`}
               >
                 <p
                   className={`font-mono text-[10px] font-semibold uppercase tracking-wider ${
-                    selected ? 'text-[#2563EB]' : 'text-[#64748B]'
+                    selected ? 'text-[#2563EB] dark:text-[#60A5FA]' : 'text-[#64748B] dark:text-[#94A3B8]'
                   }`}
                 >
                   {exp.code}
                 </p>
-                <p className="mt-0.5 text-xs font-semibold text-[#0F172A] truncate">
+                <p className="mt-0.5 text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] truncate">
                   {exp.label}
                 </p>
-                <p className="mt-0.5 text-[11px] text-[#64748B] truncate">{exp.subtitle}</p>
+                <p className="mt-0.5 text-[11px] text-[#64748B] dark:text-[#94A3B8] truncate">{exp.subtitle}</p>
               </button>
             );
           })}

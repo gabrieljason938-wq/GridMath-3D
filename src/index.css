@@ -1,24 +1,44 @@
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
     --bg-canvas: #F8FAFC;
     --bg-surface: #FFFFFF;
+    --bg-surface-subtle: #F1F5F9;
     --accent-primary: #2563EB;
     --accent-secondary: #06B6D4;
     --accent-renewable: #10B981;
     --text-main: #0F172A;
     --text-secondary: #64748B;
     --border-hairline: #E2E8F0;
+    --scrollbar-track: #F8FAFC;
+    --scrollbar-thumb: #CBD5E1;
+    --scrollbar-thumb-hover: #94A3B8;
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 
+  .dark {
+    --bg-canvas: #0B1220;
+    --bg-surface: #172033;
+    --bg-surface-subtle: #1E293B;
+    --accent-primary: #60A5FA;
+    --accent-secondary: #22D3EE;
+    --accent-renewable: #34D399;
+    --text-main: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border-hairline: #334155;
+    --scrollbar-track: #0B1220;
+    --scrollbar-thumb: #334155;
+    --scrollbar-thumb-hover: #475569;
+  }
+
   html,
   body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: var(--bg-canvas);
+    color: var(--text-main);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,8 +49,12 @@
   }
 
   :focus-visible {
-    outline: 2px solid #2563EB;
+    outline: 2px solid var(--accent-primary);
     outline-offset: 2px;
+  }
+
+  .katex {
+    color: inherit;
   }
 }
 
@@ -43,23 +67,23 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Custom thin light scrollbar */
+/* Custom thin adaptive scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: var(--scrollbar-thumb-hover);
 }
 
 @media (prefers-reduced-motion: reduce) {

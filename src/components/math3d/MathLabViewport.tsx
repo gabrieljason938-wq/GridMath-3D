@@ -73,21 +73,21 @@ export function MathLabViewport({
       <div
         role="region"
         aria-label={caption ?? 'Interactive 3D Mathematical Plot'}
-        className={`relative w-full overflow-hidden rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] ${heightClass}`}
+        className={`relative w-full overflow-hidden rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] dark:border-[#334155] dark:bg-[#172033] ${heightClass}`}
       >
         {!webglSupported || contextLost ? (
           <div className="flex h-full flex-col items-center justify-center p-6 text-center">
-            <p className="text-sm font-semibold text-[#0F172A]">
+            <p className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               3D Mathematical Canvas Unavailable
             </p>
-            <p className="mt-1 max-w-sm text-xs text-[#64748B]">
+            <p className="mt-1 max-w-sm text-xs text-[#64748B] dark:text-[#94A3B8]">
               Numerical tables, KaTeX equations, and accuracy diagnostics remain active.
             </p>
             {contextLost ? (
               <button
                 type="button"
                 onClick={() => setContextLost(false)}
-                className="mt-3 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 text-xs font-medium text-[#0F172A]"
+                className="mt-3 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:border-[#334155] dark:bg-[#0B1220] dark:text-[#F8FAFC]"
               >
                 Restore 3D Canvas
               </button>
@@ -145,15 +145,15 @@ export function MathLabViewport({
             type="button"
             onClick={handleResetCamera}
             aria-label="Reset 3D mathematical camera position"
-            className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-2.5 py-1.5 text-xs font-medium text-[#0F172A] shadow-xs hover:bg-[#F8FAFC] whitespace-nowrap"
+            className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-2.5 py-1.5 text-xs font-medium text-[#0F172A] shadow-xs hover:bg-[#F8FAFC] whitespace-nowrap dark:border-[#334155] dark:bg-[#172033] dark:text-[#F8FAFC] dark:hover:bg-[#1E293B]"
           >
-            <RotateCcw className="h-3.5 w-3.5 text-[#2563EB]" />
+            <RotateCcw className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
             Reset Camera
           </button>
         ) : null}
 
         {caption ? (
-          <div className="pointer-events-none absolute bottom-3 left-3 z-10 rounded-md border border-[#E2E8F0] bg-[#FFFFFF]/95 px-2.5 py-1 text-[11px] font-medium text-[#64748B]">
+          <div className="pointer-events-none absolute bottom-3 left-3 z-10 rounded-md border border-[#E2E8F0] bg-[#FFFFFF]/95 px-2.5 py-1 text-[11px] font-medium text-[#64748B] dark:border-[#334155] dark:bg-[#172033]/95 dark:text-[#94A3B8]">
             {caption}
           </div>
         ) : null}

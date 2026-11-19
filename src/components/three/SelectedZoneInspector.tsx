@@ -140,10 +140,10 @@ export function SelectedZoneInspector({
 
   if (variant === 'inline') {
     return (
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-xs">
+      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-xs dark:border-[#334155] dark:bg-[#172033]">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 text-[11px] text-[#64748B]">
+            <div className="flex items-center gap-2 text-[11px] text-[#64748B] dark:text-[#94A3B8]">
               <span>{node.category}</span>
               <span aria-hidden="true">·</span>
               <StatusBadge
@@ -151,25 +151,31 @@ export function SelectedZoneInspector({
                 label={shortage ? 'Supply Shortage' : 'Nominal Feed'}
               />
             </div>
-            <h4 className="mt-1 text-sm font-semibold text-[#0F172A]">{node.label}</h4>
+            <h4 className="mt-1 text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+              {node.label}
+            </h4>
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close object inspector"
-            className="rounded p-1 text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+            className="rounded p-1 text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A] dark:text-[#94A3B8] dark:hover:bg-[#1E293B] dark:hover:text-[#F8FAFC]"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
-        <p className="mt-1 text-xs leading-relaxed text-[#64748B]">{node.description}</p>
-        <div className="mt-3 grid grid-cols-2 gap-3 border-t border-[#E2E8F0] pt-3 text-xs sm:grid-cols-4">
+        <p className="mt-1 text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
+          {node.description}
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-3 border-t border-[#E2E8F0] pt-3 text-xs sm:grid-cols-4 dark:border-[#334155]">
           {cells.map((cell) => (
             <div key={cell.label}>
-              <span className="text-[#64748B]">{cell.label}</span>
+              <span className="text-[#64748B] dark:text-[#94A3B8]">{cell.label}</span>
               <p
                 className={`mt-0.5 font-mono-tabular font-semibold ${
-                  cell.accent ? 'text-[#2563EB]' : 'text-[#0F172A]'
+                  cell.accent
+                    ? 'text-[#2563EB] dark:text-[#60A5FA]'
+                    : 'text-[#0F172A] dark:text-[#F8FAFC]'
                 }`}
               >
                 {cell.value}
@@ -184,11 +190,11 @@ export function SelectedZoneInspector({
   return (
     <aside
       aria-label={`${node.label} Telemetry Inspector`}
-      className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-[0_12px_32px_-8px_rgba(15,23,42,0.12)]"
+      className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-[0_12px_32px_-8px_rgba(15,23,42,0.12)] dark:border-[#334155] dark:bg-[#172033] dark:shadow-[0_12px_32px_-8px_rgba(2,6,23,0.65)]"
     >
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <div className="flex items-center gap-1.5 text-[11px] text-[#64748B]">
+          <div className="flex items-center gap-1.5 text-[11px] text-[#64748B] dark:text-[#94A3B8]">
             <span>{node.category}</span>
             <span aria-hidden="true">·</span>
             <StatusBadge
@@ -196,27 +202,35 @@ export function SelectedZoneInspector({
               label={shortage ? 'Supply Shortage' : 'Nominal Feed'}
             />
           </div>
-          <h4 className="mt-1 text-sm font-semibold leading-snug text-[#0F172A]">{node.label}</h4>
+          <h4 className="mt-1 text-sm font-semibold leading-snug text-[#0F172A] dark:text-[#F8FAFC]">
+            {node.label}
+          </h4>
         </div>
         <button
           type="button"
           onClick={onClose}
           aria-label="Close object inspector"
-          className="shrink-0 rounded-md p-1 text-[#64748B] transition-colors hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+          className="shrink-0 rounded-md p-1 text-[#64748B] transition-colors hover:bg-[#F8FAFC] hover:text-[#0F172A] dark:text-[#94A3B8] dark:hover:bg-[#1E293B] dark:hover:text-[#F8FAFC]"
         >
           <X className="h-4 w-4" />
         </button>
       </div>
 
-      <p className="mt-1.5 text-xs leading-relaxed text-[#64748B]">{node.description}</p>
+      <p className="mt-1.5 text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
+        {node.description}
+      </p>
 
-      <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 border-t border-[#E2E8F0] pt-3 text-xs">
+      <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2.5 border-t border-[#E2E8F0] pt-3 text-xs dark:border-[#334155]">
         {cells.map((cell) => (
           <div key={cell.label} className="min-w-0">
-            <span className="block truncate text-[11px] text-[#64748B]">{cell.label}</span>
+            <span className="block truncate text-[11px] text-[#64748B] dark:text-[#94A3B8]">
+              {cell.label}
+            </span>
             <p
               className={`mt-0.5 truncate font-mono-tabular text-xs font-semibold ${
-                cell.accent ? 'text-[#2563EB]' : 'text-[#0F172A]'
+                cell.accent
+                  ? 'text-[#2563EB] dark:text-[#60A5FA]'
+                  : 'text-[#0F172A] dark:text-[#F8FAFC]'
               }`}
             >
               {cell.value}
@@ -226,8 +240,8 @@ export function SelectedZoneInspector({
       </div>
 
       {connectedCorridors.length > 0 ? (
-        <div className="mt-3 border-t border-[#E2E8F0] pt-3">
-          <div className="flex items-center justify-between text-[11px] font-medium text-[#64748B]">
+        <div className="mt-3 border-t border-[#E2E8F0] pt-3 dark:border-[#334155]">
+          <div className="flex items-center justify-between text-[11px] font-medium text-[#64748B] dark:text-[#94A3B8]">
             <span>Connected Power Corridors</span>
             <span>MW / Cap</span>
           </div>
@@ -237,13 +251,15 @@ export function SelectedZoneInspector({
               return (
                 <div key={corridor.id} className="text-[11px]">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="truncate font-medium text-[#334155]">{corridor.label}</span>
-                    <span className="shrink-0 font-mono-tabular text-[#0F172A]">
+                    <span className="truncate font-medium text-[#334155] dark:text-[#CBD5E1]">
+                      {corridor.label}
+                    </span>
+                    <span className="shrink-0 font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {corridor.flowMW.toFixed(1)} MW{' '}
                       <span className="text-[#94A3B8]">({pct}%)</span>
                     </span>
                   </div>
-                  <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-[#F1F5F9]">
+                  <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-[#F1F5F9] dark:bg-[#0B1220]">
                     <div
                       className="h-full rounded-full transition-all"
                       style={{
@@ -259,12 +275,12 @@ export function SelectedZoneInspector({
         </div>
       ) : null}
 
-      <div className="mt-3.5 flex items-center justify-between border-t border-[#E2E8F0] pt-2.5">
+      <div className="mt-3.5 flex items-center justify-between border-t border-[#E2E8F0] pt-2.5 dark:border-[#334155]">
         {onFocusCamera ? (
           <button
             type="button"
             onClick={onFocusCamera}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-[#2563EB] hover:underline"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-[#2563EB] hover:underline dark:text-[#60A5FA]"
           >
             <Crosshair className="h-3.5 w-3.5" />
             Focus Camera
@@ -275,7 +291,7 @@ export function SelectedZoneInspector({
         <button
           type="button"
           onClick={onClose}
-          className="text-xs font-medium text-[#64748B] hover:text-[#0F172A]"
+          className="text-xs font-medium text-[#64748B] hover:text-[#0F172A] dark:text-[#94A3B8] dark:hover:text-[#F8FAFC]"
         >
           Dismiss
         </button>

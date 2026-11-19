@@ -60,30 +60,30 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
   return (
     <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
       {/* Left Method & Data Editor */}
-      <div className="space-y-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-4">
+      <div className="space-y-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-[#0F172A]">Predictor Model &amp; Data</h3>
+          <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Predictor Model &amp; Data</h3>
           <button
             type="button"
             onClick={() => {
               setCustomObs(null);
               setSelectedObsId(null);
             }}
-            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline"
           >
             <RotateCcw className="h-3 w-3" />
             Reset
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-1.5 rounded-lg bg-[#F8FAFC] p-1">
+        <div className="grid grid-cols-2 gap-1.5 rounded-lg bg-[#F8FAFC] dark:bg-[#0B1220] p-1">
           <button
             type="button"
             onClick={() => setPredictorCount(1)}
             className={`rounded-md py-1.5 text-xs font-medium transition-colors ${
               predictorCount === 1
-                ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
             }`}
           >
             1 Predictor (Linear)
@@ -93,17 +93,17 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
             onClick={() => setPredictorCount(2)}
             className={`rounded-md py-1.5 text-xs font-medium transition-colors ${
               predictorCount === 2
-                ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
             }`}
           >
             2 Predictors (Plane)
           </button>
         </div>
 
-        <div className="max-h-56 overflow-y-auto rounded-lg border border-[#E2E8F0]">
+        <div className="max-h-56 overflow-y-auto rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
           <table className="w-full text-left text-xs font-mono-tabular">
-            <thead className="border-b border-[#E2E8F0] bg-[#F8FAFC] font-sans text-[#64748B]">
+            <thead className="border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] font-sans text-[#64748B] dark:text-[#94A3B8]">
               <tr>
                 <th className="px-2 py-1.5 font-medium">Obs</th>
                 <th className="px-2 py-1.5 font-medium">x₁</th>
@@ -111,19 +111,19 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
                 <th className="px-2 py-1.5 font-medium">y</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
               {observations.map((obs, idx) => (
                 <tr
                   key={obs.id}
                   onClick={() => setSelectedObsId(obs.id)}
                   className={`cursor-pointer ${
-                    selectedObsId === obs.id ? 'bg-[#2563EB]/6' : 'hover:bg-[#F8FAFC]'
+                    selectedObsId === obs.id ? 'bg-[#2563EB]/6' : 'hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                   }`}
                 >
-                  <td className="px-2 py-1 text-[#0F172A]">{obs.label}</td>
-                  <td className="px-2 py-1 text-[#64748B]">{obs.x1.toFixed(1)}</td>
+                  <td className="px-2 py-1 text-[#0F172A] dark:text-[#F8FAFC]">{obs.label}</td>
+                  <td className="px-2 py-1 text-[#64748B] dark:text-[#94A3B8]">{obs.x1.toFixed(1)}</td>
                   {predictorCount === 2 ? (
-                    <td className="px-2 py-1 text-[#64748B]">{(obs.x2 ?? 0).toFixed(1)}</td>
+                    <td className="px-2 py-1 text-[#64748B] dark:text-[#94A3B8]">{(obs.x2 ?? 0).toFixed(1)}</td>
                   ) : null}
                   <td className="px-2 py-1">
                     <input
@@ -131,7 +131,7 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
                       step={5}
                       value={obs.y}
                       onChange={(e) => updateY(idx, Number(e.target.value) || 0)}
-                      className="w-20 rounded border border-[#E2E8F0] px-1.5 py-0.5 text-xs text-[#0F172A]"
+                      className="w-20 rounded border border-[#E2E8F0] dark:border-[#334155] px-1.5 py-0.5 text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                     />
                   </td>
                 </tr>
@@ -143,18 +143,18 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
         <button
           type="button"
           onClick={() => onExport('least-squares-qr.json', result)}
-          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
         >
-          <Download className="h-3.5 w-3.5 text-[#2563EB]" />
+          <Download className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
           Export Regression Diagnostics
         </button>
       </div>
 
       {/* Center Formula & 3D Regression Visualization */}
       <div className="space-y-4 xl:col-span-8">
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="text-sm font-semibold text-[#0F172A]">
+            <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               1. Mathematical Formula — Householder QR Least Squares &amp; Normal Equations
             </h3>
             <StatusBadge
@@ -162,7 +162,7 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
               label={result.valid ? 'QR Factorized' : 'Rank Deficient'}
             />
           </div>
-          <div className="mt-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+          <div className="mt-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3">
             <KaTeXFormula
               displayMode
               tex="X = QR \implies R\boldsymbol{\beta} = Q^T\mathbf{y}, \qquad \text{Normal Eqs (Educational): } (X^T X)\boldsymbol{\beta} = X^T\mathbf{y}"
@@ -191,13 +191,13 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
       </div>
 
       {/* Step-by-Step Normal Matrix + Residual Diagnostics */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-7">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-7">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           2. Fitted Parameters &amp; Educational Normal Equations Matrix XᵀX
         </h3>
         {result.valid ? (
           <div className="mt-3 space-y-3 text-xs">
-            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3 font-mono-tabular text-[#0F172A]">
+            <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3 font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
               {predictorCount === 1
                 ? `ŷ = ${result.coefficients[0].toFixed(precision)} + (${result.coefficients[1].toFixed(precision)})·x₁`
                 : `ŷ = ${result.coefficients[0].toFixed(precision)} + (${result.coefficients[1].toFixed(precision)})·x₁ + (${result.coefficients[2].toFixed(precision)})·x₂`}
@@ -205,26 +205,26 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-right font-mono-tabular">
                 <thead>
-                  <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                  <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                     <th className="py-1.5 text-left font-sans font-medium">Row</th>
                     {result.normalMatrixXTX[0].map((_, j) => (
                       <th key={j} className="py-1.5 font-medium">
                         (XᵀX)_{j}
                       </th>
                     ))}
-                    <th className="py-1.5 font-medium text-[#2563EB]">Xᵀy</th>
+                    <th className="py-1.5 font-medium text-[#2563EB] dark:text-[#60A5FA]">Xᵀy</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#E2E8F0]">
+                <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                   {result.normalMatrixXTX.map((row, i) => (
                     <tr key={i}>
-                      <td className="py-1.5 text-left text-[#64748B]">β_{i}</td>
+                      <td className="py-1.5 text-left text-[#64748B] dark:text-[#94A3B8]">β_{i}</td>
                       {row.map((val, j) => (
-                        <td key={j} className="py-1.5 text-[#0F172A]">
+                        <td key={j} className="py-1.5 text-[#0F172A] dark:text-[#F8FAFC]">
                           {val.toFixed(1)}
                         </td>
                       ))}
-                      <td className="py-1.5 font-semibold text-[#2563EB]">
+                      <td className="py-1.5 font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                         {result.normalVectorXTy[i].toFixed(1)}
                       </td>
                     </tr>
@@ -234,36 +234,36 @@ export function ExpRegressionPanel({ datasetMode, precision, onExport }: Props) 
             </div>
           </div>
         ) : (
-          <p className="mt-2 text-xs text-rose-600">{result.error}</p>
+          <p className="mt-2 text-xs text-rose-600 dark:text-rose-400">{result.error}</p>
         )}
       </div>
 
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-5">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-5">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           4. Numerical Accuracy &amp; Residual Metrics
         </h3>
-        <dl className="mt-3 divide-y divide-[#E2E8F0] text-xs">
+        <dl className="mt-3 divide-y divide-[#E2E8F0] dark:divide-[#334155] text-xs">
           <div className="flex justify-between py-2">
-            <dt className="text-[#64748B]">Mean Absolute Error (MAE)</dt>
-            <dd className="font-mono-tabular font-semibold text-[#0F172A]">
+            <dt className="text-[#64748B] dark:text-[#94A3B8]">Mean Absolute Error (MAE)</dt>
+            <dd className="font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               {result.mae.toFixed(precision)}
             </dd>
           </div>
           <div className="flex justify-between py-2">
-            <dt className="text-[#64748B]">Root Mean Squared Error (RMSE)</dt>
-            <dd className="font-mono-tabular font-semibold text-[#2563EB]">
+            <dt className="text-[#64748B] dark:text-[#94A3B8]">Root Mean Squared Error (RMSE)</dt>
+            <dd className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
               {result.rmse.toFixed(precision)}
             </dd>
           </div>
           <div className="flex justify-between py-2">
-            <dt className="text-[#64748B]">R² Coefficient</dt>
-            <dd className="font-mono-tabular font-semibold text-[#10B981]">
+            <dt className="text-[#64748B] dark:text-[#94A3B8]">R² Coefficient</dt>
+            <dd className="font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
               {result.rSquared.toFixed(precision)}
             </dd>
           </div>
           <div className="flex justify-between py-2">
-            <dt className="text-[#64748B]">QR Orthogonality ||QᵀQ - I||_F</dt>
-            <dd className="font-mono-tabular text-[#06B6D4]">
+            <dt className="text-[#64748B] dark:text-[#94A3B8]">QR Orthogonality ||QᵀQ - I||_F</dt>
+            <dd className="font-mono-tabular text-[#06B6D4] dark:text-[#22D3EE]">
               {result.qrOrthogonalityError.toExponential(3)}
             </dd>
           </div>

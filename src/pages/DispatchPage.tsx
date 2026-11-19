@@ -101,11 +101,11 @@ export function DispatchPage() {
   return (
     <div className="mx-auto max-w-[1440px] space-y-6">
       {/* Header, Strategy Switcher & Time Step Control */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="max-w-3xl space-y-1">
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
-              <span className="font-medium text-[#2563EB]">{activeDispatch.solverName}</span>
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
+              <span className="font-medium text-[#2563EB] dark:text-[#60A5FA]">{activeDispatch.solverName}</span>
               <span aria-hidden="true">·</span>
               <span>{activeScenario.name}</span>
               <span aria-hidden="true">·</span>
@@ -113,36 +113,36 @@ export function DispatchPage() {
               {appliedForecastLabel ? (
                 <>
                   <span aria-hidden="true">·</span>
-                  <span className="font-medium text-[#10B981]">{appliedForecastLabel}</span>
+                  <span className="font-medium text-[#10B981] dark:text-[#34D399]">{appliedForecastLabel}</span>
                 </>
               ) : null}
             </div>
-            <h2 className="text-lg font-semibold text-[#0F172A]">
+            <h2 className="text-lg font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Multi-Period Optimal Energy Dispatch &amp; BESS Scheduling Engine
             </h2>
-            <p className="text-sm text-[#64748B]">
+            <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">
               Minimizes 24-hour total operational cost, battery degradation, unserved-load VOLL penalties, and optional carbon cost subject to power balance, ramp-rate dynamics, generator bounds, and state-of-charge conservation.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
-            <div className="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1.5">
+            <div className="flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-2.5 py-1.5">
               <button
                 type="button"
                 onClick={() => stepHour(-1)}
                 aria-label="Previous hour"
-                className="rounded p-1 text-[#64748B] hover:bg-[#FFFFFF] hover:text-[#0F172A]"
+                className="rounded p-1 text-[#64748B] dark:text-[#94A3B8] hover:bg-[#FFFFFF] dark:hover:bg-[#172033] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
-              <span className="font-mono-tabular px-1 text-xs font-semibold text-[#0F172A] whitespace-nowrap">
+              <span className="font-mono-tabular px-1 text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] whitespace-nowrap">
                 {activeDispatch.timestampLabel} IST
               </span>
               <button
                 type="button"
                 onClick={() => stepHour(1)}
                 aria-label="Next hour"
-                className="rounded p-1 text-[#64748B] hover:bg-[#FFFFFF] hover:text-[#0F172A]"
+                className="rounded p-1 text-[#64748B] dark:text-[#94A3B8] hover:bg-[#FFFFFF] dark:hover:bg-[#172033] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -152,7 +152,7 @@ export function DispatchPage() {
               <button
                 type="button"
                 onClick={clearAppliedForecast}
-                className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+                className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
               >
                 Restore Scenario Demand
               </button>
@@ -160,11 +160,11 @@ export function DispatchPage() {
 
             <Link
               to="/smart-city"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
             >
-              <Layers className="h-3.5 w-3.5 text-[#2563EB]" />
+              <Layers className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
               Inspect in 3D Smart City
-              <ArrowUpRight className="h-3.5 w-3.5 text-[#64748B]" />
+              <ArrowUpRight className="h-3.5 w-3.5 text-[#64748B] dark:text-[#94A3B8]" />
             </Link>
 
             <StatusBadge tone={solverBadgeTone} label={solverBadgeLabel} />
@@ -172,7 +172,7 @@ export function DispatchPage() {
         </div>
 
         {/* Strategy Comparison Selector */}
-        <div className="grid grid-cols-1 gap-3 border-t border-[#E2E8F0] pt-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-4 md:grid-cols-3">
           {STRATEGY_OPTIONS.map((opt) => {
             const active = dispatchConfig.strategy === opt.id;
             const comp = dispatchBundle.comparisons.find((c) => c.strategy === opt.id);
@@ -183,25 +183,25 @@ export function DispatchPage() {
                 onClick={() => setDispatchStrategy(opt.id)}
                 className={`rounded-lg border p-3.5 text-left transition-colors ${
                   active
-                    ? 'border-[#2563EB] bg-[#EFF6FF]/60'
-                    : 'border-[#E2E8F0] bg-[#FFFFFF] hover:bg-[#F8FAFC]'
+                    ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#EFF6FF]/60 dark:bg-[#60A5FA]/15'
+                    : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">
                   <span
                     className={`text-xs font-semibold ${
-                      active ? 'text-[#2563EB]' : 'text-[#0F172A]'
+                      active ? 'text-[#2563EB] dark:text-[#60A5FA]' : 'text-[#0F172A] dark:text-[#F8FAFC]'
                     }`}
                   >
                     {opt.label}
                   </span>
                   {comp ? (
-                    <span className="font-mono-tabular text-xs font-semibold text-[#0F172A]">
+                    <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                       ₹{formatInr(comp.totalCostInr)}
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-1 text-[11px] leading-snug text-[#64748B]">{opt.shortDesc}</p>
+                <p className="mt-1 text-[11px] leading-snug text-[#64748B] dark:text-[#94A3B8]">{opt.shortDesc}</p>
               </button>
             );
           })}
@@ -209,23 +209,23 @@ export function DispatchPage() {
 
         {/* Explicit Infeasibility or Unserved Capacity Alert */}
         {!dispatchBundle.feasible ? (
-          <div className="flex items-start gap-3 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-xs text-rose-900">
-            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-rose-600" />
+          <div className="flex items-start gap-3 rounded-lg border border-rose-200 dark:border-rose-500/30 bg-rose-50 dark:bg-rose-950/40 px-4 py-3 text-xs text-rose-900 dark:text-rose-100">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" />
             <div>
               <p className="font-semibold">Optimization Constraints Infeasible</p>
-              <p className="mt-0.5 text-rose-800">
+              <p className="mt-0.5 text-rose-800 dark:text-rose-200">
                 The current daily carbon cap ({dispatchConfig.carbonCapTonnesCO2e} tCO₂e) or minimum-stable unit requirements cannot be satisfied simultaneously across the 24-hour demand horizon. Increase the carbon cap or relax unit minimum limits.
               </p>
             </div>
           </div>
         ) : totalUnservedMWh > 0.1 ? (
-          <div className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
-            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+          <div className="flex items-start gap-3 rounded-lg border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-950/40 px-4 py-3 text-xs text-amber-900 dark:text-amber-100">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
             <div>
               <p className="font-semibold">
                 Inadequate Fleet Capacity — Unserved Energy Activated ({totalUnservedMWh.toFixed(1)} MWh)
               </p>
-              <p className="mt-0.5 text-amber-800">
+              <p className="mt-0.5 text-amber-800 dark:text-amber-200">
                 Peak net demand exceeds combined generator availability and BESS discharge headroom. Nonnegative slack variable Uₜ ≥ 0 preserved power balance at VOLL penalty ₹{formatInr(dispatchConfig.vollPenaltyInrPerMWh)}/MWh (total ₹{formatInr(dispatchBundle.vollPenaltyCostInr)}).
               </p>
             </div>
@@ -284,15 +284,15 @@ export function DispatchPage() {
       {/* Controls + 3D Mathematical Workspace */}
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         {/* Optimization Parameters & Constraint Controls */}
-        <div className="space-y-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-4">
+        <div className="space-y-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Objective &amp; Constraint Controls
             </h3>
             <button
               type="button"
               onClick={resetDispatchConfig}
-              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] px-2 py-1 text-[11px] font-medium text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A] whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] dark:border-[#334155] px-2 py-1 text-[11px] font-medium text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] whitespace-nowrap shrink-0"
             >
               <RotateCcw className="h-3 w-3" />
               Reset
@@ -300,12 +300,12 @@ export function DispatchPage() {
           </div>
 
           {/* Carbon Price */}
-          <div className="space-y-1.5 border-t border-[#E2E8F0] pt-3">
+          <div className="space-y-1.5 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
             <div className="flex items-center justify-between text-xs">
-              <label htmlFor="carbon-price-slider" className="font-medium text-[#0F172A]">
+              <label htmlFor="carbon-price-slider" className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                 Carbon Price
               </label>
-              <span className="font-mono-tabular font-semibold text-[#2563EB]">
+              <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                 ₹{formatInr(dispatchConfig.carbonPriceInrPerTonne)} / tCO₂e
               </span>
             </div>
@@ -321,14 +321,14 @@ export function DispatchPage() {
               }
               className="h-1.5 w-full cursor-pointer accent-[#2563EB]"
             />
-            <p className="text-[11px] text-[#64748B]">
+            <p className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
               Shifts optimization from least-cost (₹0/t) toward multi-objective cost + emissions dispatch.
             </p>
           </div>
 
           {/* Optional Hard Carbon Cap */}
-          <div className="space-y-2 border-t border-[#E2E8F0] pt-3">
-            <label className="flex cursor-pointer items-center justify-between text-xs font-medium text-[#0F172A]">
+          <div className="space-y-2 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
+            <label className="flex cursor-pointer items-center justify-between text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC]">
               <span>Enforce Daily Carbon Cap</span>
               <input
                 type="checkbox"
@@ -351,7 +351,7 @@ export function DispatchPage() {
                   aria-label="Daily carbon emissions cap"
                   className="h-1.5 w-full cursor-pointer accent-[#10B981]"
                 />
-                <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] whitespace-nowrap">
+                <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] whitespace-nowrap">
                   {dispatchConfig.carbonCapTonnesCO2e} t
                 </span>
               </div>
@@ -359,8 +359,8 @@ export function DispatchPage() {
           </div>
 
           {/* Terminal BESS SoC Target */}
-          <div className="space-y-2 border-t border-[#E2E8F0] pt-3">
-            <label className="flex cursor-pointer items-center justify-between text-xs font-medium text-[#0F172A]">
+          <div className="space-y-2 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
+            <label className="flex cursor-pointer items-center justify-between text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC]">
               <span>Terminal SoC Target (t = 23)</span>
               <input
                 type="checkbox"
@@ -385,7 +385,7 @@ export function DispatchPage() {
                   aria-label="Terminal BESS State of Charge target"
                   className="h-1.5 w-full cursor-pointer accent-[#06B6D4]"
                 />
-                <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] whitespace-nowrap">
+                <span className="font-mono-tabular text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC] whitespace-nowrap">
                   {dispatchConfig.terminalSocTargetMWh.toFixed(0)} MWh
                 </span>
               </div>
@@ -393,9 +393,9 @@ export function DispatchPage() {
           </div>
 
           {/* Economic & Stability Settings */}
-          <div className="grid grid-cols-2 gap-3 border-t border-[#E2E8F0] pt-3 text-xs">
+          <div className="grid grid-cols-2 gap-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs">
             <label className="space-y-1">
-              <span className="block text-[11px] text-[#64748B]">VOLL Penalty (INR/MWh)</span>
+              <span className="block text-[11px] text-[#64748B] dark:text-[#94A3B8]">VOLL Penalty (INR/MWh)</span>
               <input
                 type="number"
                 min={5000}
@@ -407,12 +407,12 @@ export function DispatchPage() {
                     vollPenaltyInrPerMWh: Math.max(1000, Number(e.target.value) || 25000),
                   })
                 }
-                className="w-full rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A]"
+                className="w-full rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
               />
             </label>
 
             <label className="space-y-1">
-              <span className="block text-[11px] text-[#64748B]">BESS Cycle (INR/MWh)</span>
+              <span className="block text-[11px] text-[#64748B] dark:text-[#94A3B8]">BESS Cycle (INR/MWh)</span>
               <input
                 type="number"
                 min={50}
@@ -424,12 +424,12 @@ export function DispatchPage() {
                     batteryCycleCostInrPerMWh: Math.max(10, Number(e.target.value) || 420),
                   })
                 }
-                className="w-full rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A]"
+                className="w-full rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
               />
             </label>
           </div>
 
-          <label className="flex cursor-pointer items-center justify-between border-t border-[#E2E8F0] pt-3 text-xs font-medium text-[#0F172A]">
+          <label className="flex cursor-pointer items-center justify-between border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC]">
             <span>Enforce Dispatchable P_min Bounds</span>
             <input
               type="checkbox"
@@ -442,8 +442,8 @@ export function DispatchPage() {
           </label>
 
           {/* Configurable Emission Factors */}
-          <div className="space-y-2 border-t border-[#E2E8F0] pt-3">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-[#64748B]">
+          <div className="space-y-2 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-[#64748B] dark:text-[#94A3B8]">
               Emission Factors (kgCO₂e/MWh)
             </p>
             <div className="grid grid-cols-3 gap-2 text-xs">
@@ -455,7 +455,7 @@ export function DispatchPage() {
                 ] as const
               ).map(([tech, title]) => (
                 <label key={tech} className="space-y-1">
-                  <span className="block text-[11px] text-[#64748B]">{title}</span>
+                  <span className="block text-[11px] text-[#64748B] dark:text-[#94A3B8]">{title}</span>
                   <input
                     type="number"
                     min={0}
@@ -470,7 +470,7 @@ export function DispatchPage() {
                         },
                       })
                     }
-                    className="w-full rounded-md border border-[#E2E8F0] bg-[#F8FAFC] px-2 py-1 font-mono-tabular text-xs text-[#0F172A]"
+                    className="w-full rounded-md border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-2 py-1 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                   />
                 </label>
               ))}
@@ -479,27 +479,27 @@ export function DispatchPage() {
         </div>
 
         {/* 3D Mathematical Workspace */}
-        <div className="flex flex-col rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-8">
+        <div className="flex flex-col rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-8">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h3 className="text-base font-semibold text-[#0F172A]">
+              <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 3D Dispatch &amp; Feasible Region Workspace
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 {view3DTab === '24h-trajectory'
                   ? 'Full 24-hour multi-period Time × Source × MW allocation and BESS SoC (%) ribbon — click any bar to change the active hour.'
                   : `Simplified 2-variable single-hour slice at ${twoVarSlice.timestampLabel}: CCGT Gas (x₁) vs Coal Peaker (x₂) serving ${twoVarSlice.netResidualDemandMW.toFixed(1)} MW net thermal load.`}
               </p>
             </div>
 
-            <div className="flex items-center gap-1 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-1">
+            <div className="flex items-center gap-1 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-1">
               <button
                 type="button"
                 onClick={() => setView3DTab('24h-trajectory')}
                 className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                   view3DTab === '24h-trajectory'
-                    ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                    : 'text-[#64748B] hover:text-[#0F172A]'
+                    ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                 }`}
               >
                 24h Allocation &amp; SoC
@@ -509,8 +509,8 @@ export function DispatchPage() {
                 onClick={() => setView3DTab('2var-slice')}
                 className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                   view3DTab === '2var-slice'
-                    ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                    : 'text-[#64748B] hover:text-[#0F172A]'
+                    ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                    : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                 }`}
               >
                 2-Variable Hour Slice
@@ -550,8 +550,8 @@ export function DispatchPage() {
               </MathLabViewport>
 
               {twoVarSlice.lpResult.steps.length > 0 ? (
-                <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2 text-xs">
-                  <span className="font-medium text-[#0F172A]">
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-3 py-2 text-xs">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                     Simplex Vertex Step {clampedSliceStep + 1} / {twoVarSlice.lpResult.steps.length}
                   </span>
                   <div className="flex items-center gap-3">
@@ -564,7 +564,7 @@ export function DispatchPage() {
                       aria-label="Simplex vertex iteration step"
                       className="h-1.5 w-36 cursor-pointer accent-[#2563EB]"
                     />
-                    <span className="font-mono-tabular text-[#64748B]">
+                    <span className="font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       Optimal (x₁, x₂) = ({twoVarSlice.lpResult.optimalPoint[0]?.toFixed(1) ?? '0.0'},{' '}
                       {twoVarSlice.lpResult.optimalPoint[1]?.toFixed(1) ?? '0.0'}) MW
                     </span>
@@ -578,17 +578,17 @@ export function DispatchPage() {
 
       {/* KaTeX Mathematical Formulation + Constraint Residuals */}
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-12">
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4 xl:col-span-6">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4 xl:col-span-6">
           <div>
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Mathematical Optimization Formulation
             </h3>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
               Exact multi-period linear program solved across 24 coupled hourly intervals.
             </p>
           </div>
 
-          <div className="space-y-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-4 overflow-x-auto">
+          <div className="space-y-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-4 overflow-x-auto">
             <KaTeXFormula
               displayMode={true}
               tex="\min \sum_{t=0}^{23} \left[ \sum_{g} \left(c_g + \pi_{\mathrm{CO_2}} e_g\right) P_{g,t} + c_{\mathrm{deg}}\left(P_t^{\mathrm{ch}} + P_t^{\mathrm{dis}}\right) + \mathrm{VOLL}\cdot U_t \right]"
@@ -607,20 +607,20 @@ export function DispatchPage() {
             />
           </div>
 
-          <p className="text-xs leading-relaxed text-[#64748B]">
-            <strong className="text-[#0F172A]">Complementarity Note:</strong>{' '}
+          <p className="text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
+            <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Complementarity Note:</strong>{' '}
             {dispatchBundle.lpRelaxationNote}
           </p>
         </div>
 
         {/* Numerical Solver Verification & Residuals */}
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4 xl:col-span-6">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4 xl:col-span-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="text-base font-semibold text-[#0F172A]">
+              <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 Solver Convergence &amp; Constraint Residual Audit
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 Direct verification of every mathematical constraint against primal solution values.
               </p>
             </div>
@@ -634,28 +634,28 @@ export function DispatchPage() {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 text-xs sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3.5 text-xs sm:grid-cols-4">
             <div>
-              <p className="text-[#64748B]">LP Dimensions</p>
-              <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A]">
+              <p className="text-[#64748B] dark:text-[#94A3B8]">LP Dimensions</p>
+              <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 {dispatchBundle.numVariables} × {dispatchBundle.numConstraints}
               </p>
             </div>
             <div>
-              <p className="text-[#64748B]">Simplex Pivots</p>
-              <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A]">
+              <p className="text-[#64748B] dark:text-[#94A3B8]">Simplex Pivots</p>
+              <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 {dispatchBundle.simplexIterations}
               </p>
             </div>
             <div>
-              <p className="text-[#64748B]">B&amp;B Nodes</p>
-              <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A]">
+              <p className="text-[#64748B] dark:text-[#94A3B8]">B&amp;B Nodes</p>
+              <p className="mt-0.5 font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 {dispatchBundle.branchAndBoundNodes}
               </p>
             </div>
             <div>
-              <p className="text-[#64748B]">Simultaneous Ch/Dis</p>
-              <p className="mt-0.5 font-mono-tabular font-semibold text-[#10B981]">
+              <p className="text-[#64748B] dark:text-[#94A3B8]">Simultaneous Ch/Dis</p>
+              <p className="mt-0.5 font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
                 {dispatchBundle.residualSummary.simultaneousChargeDischargeHours} / 24 h
               </p>
             </div>
@@ -664,13 +664,13 @@ export function DispatchPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                   <th className="py-2 pr-4 font-medium">Constraint Family</th>
                   <th className="py-2 pr-4 text-right font-medium">Max Violation</th>
                   <th className="py-2 text-right font-medium">Verification</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 {[
                   {
                     name: 'Hourly Power Balance (24 eqs)',
@@ -703,13 +703,13 @@ export function DispatchPage() {
                     ok: dispatchBundle.residualSummary.carbonCapViolationTonnes < 1e-2,
                   },
                 ].map((row) => (
-                  <tr key={row.name} className="hover:bg-[#F8FAFC]">
-                    <td className="py-2 pr-4 text-[#0F172A]">{row.name}</td>
-                    <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B]">
+                  <tr key={row.name} className="hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]">
+                    <td className="py-2 pr-4 text-[#0F172A] dark:text-[#F8FAFC]">{row.name}</td>
+                    <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       {row.val}
                     </td>
                     <td className="py-2 text-right font-medium">
-                      <span className={row.ok ? 'text-[#10B981]' : 'text-rose-600'}>
+                      <span className={row.ok ? 'text-[#10B981] dark:text-[#34D399]' : 'text-rose-600 dark:text-rose-400'}>
                         {row.ok ? 'Satisfied' : 'Violated'}
                       </span>
                     </td>
@@ -722,13 +722,13 @@ export function DispatchPage() {
       </section>
 
       {/* Side-by-Side Dispatch Strategy Comparison Table */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Dispatch Strategy Comparison (Identical Constraints &amp; Demand)
             </h3>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
               Click any strategy row to switch the active dispatch and update the 3D Smart City Digital Twin.
             </p>
           </div>
@@ -737,7 +737,7 @@ export function DispatchPage() {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+              <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                 <th className="py-2.5 pr-4 font-medium">Strategy</th>
                 <th className="py-2.5 pr-4 text-right font-medium">Total 24h Cost</th>
                 <th className="py-2.5 pr-4 text-right font-medium">Savings vs Thermal</th>
@@ -748,7 +748,7 @@ export function DispatchPage() {
                 <th className="py-2.5 text-right font-medium">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
               {dispatchBundle.comparisons.map((row) => {
                 const isSelected = row.strategy === dispatchConfig.strategy;
                 return (
@@ -756,37 +756,37 @@ export function DispatchPage() {
                     key={row.strategy}
                     onClick={() => setDispatchStrategy(row.strategy)}
                     className={`cursor-pointer transition-colors ${
-                      isSelected ? 'bg-[#EFF6FF]/60 font-medium' : 'hover:bg-[#F8FAFC]'
+                      isSelected ? 'bg-[#EFF6FF]/60 dark:bg-[#60A5FA]/15 font-medium' : 'hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                     }`}
                   >
-                    <td className="py-2.5 pr-4 text-[#0F172A]">
+                    <td className="py-2.5 pr-4 text-[#0F172A] dark:text-[#F8FAFC]">
                       {row.label}
                       {isSelected ? (
-                        <span className="ml-2 text-[10px] font-semibold text-[#2563EB]">
+                        <span className="ml-2 text-[10px] font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                           ACTIVE
                         </span>
                       ) : null}
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-mono-tabular font-semibold text-[#0F172A]">
+                    <td className="py-2.5 pr-4 text-right font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                       ₹{formatInr(row.totalCostInr)}
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#10B981]">
+                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#10B981] dark:text-[#34D399]">
                       {row.costSavingsVsThermalFirstPercent > 0 ? '+' : ''}
                       {row.costSavingsVsThermalFirstPercent.toFixed(2)}%
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {row.renewableContributionPercent.toFixed(1)}%
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#64748B]">
+                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       {row.totalEmissionsTonnesCO2e.toFixed(2)}
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {row.unservedEnergyMWh.toFixed(2)}
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#64748B]">
+                    <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       {row.curtailedRenewableMWh.toFixed(2)}
                     </td>
-                    <td className="py-2.5 text-right text-[#2563EB]">{row.solverStatus}</td>
+                    <td className="py-2.5 text-right text-[#2563EB] dark:text-[#60A5FA]">{row.solverStatus}</td>
                   </tr>
                 );
               })}
@@ -796,9 +796,9 @@ export function DispatchPage() {
       </section>
 
       {/* Active Hour Fleet Setpoints */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
-          <h3 className="text-base font-semibold text-[#0F172A]">
+          <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             Fleet Commitment at {activeDispatch.timestampLabel} IST
           </h3>
           <KaTeXFormula tex="P_g^{\min} \le P_{g,t} \le P_g^{\max}, \quad |P_{g,t} - P_{g,t-1}| \le R_g" />
@@ -807,7 +807,7 @@ export function DispatchPage() {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+              <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                 <th className="py-2.5 pr-4 font-medium">Unit</th>
                 <th className="py-2.5 pr-4 font-medium">Technology</th>
                 <th className="py-2.5 pr-4 text-right font-medium">Available (MW)</th>
@@ -817,24 +817,24 @@ export function DispatchPage() {
                 <th className="py-2.5 text-right font-medium">Emissions (kgCO₂e)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
               {activeDispatch.generatorSetpoints.map((unit) => (
-                <tr key={unit.generatorId} className="hover:bg-[#F8FAFC]">
-                  <td className="py-2.5 pr-4 font-medium text-[#0F172A]">{unit.name}</td>
-                  <td className="py-2.5 pr-4 capitalize text-[#64748B]">{unit.technology}</td>
-                  <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#64748B]">
+                <tr key={unit.generatorId} className="hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]">
+                  <td className="py-2.5 pr-4 font-medium text-[#0F172A] dark:text-[#F8FAFC]">{unit.name}</td>
+                  <td className="py-2.5 pr-4 capitalize text-[#64748B] dark:text-[#94A3B8]">{unit.technology}</td>
+                  <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                     {unit.availableMaxMW.toFixed(1)}
                   </td>
-                  <td className="py-2.5 pr-4 text-right font-mono-tabular font-semibold text-[#2563EB]">
+                  <td className="py-2.5 pr-4 text-right font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                     {unit.dispatchedMW.toFixed(1)}
                   </td>
-                  <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                  <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                     {unit.utilizationPercent.toFixed(1)}%
                   </td>
-                  <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                  <td className="py-2.5 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                     ₹{formatInr(unit.hourlyCostInr)}
                   </td>
-                  <td className="py-2.5 text-right font-mono-tabular text-[#64748B]">
+                  <td className="py-2.5 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                     {formatInr(unit.hourlyEmissionsKgCO2e)}
                   </td>
                 </tr>
@@ -845,19 +845,19 @@ export function DispatchPage() {
       </section>
 
       {/* 24-Hour Trajectory Schedule Table */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-3">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 className="text-base font-semibold text-[#0F172A]">
+          <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             24-Hour Multi-Period Schedule
           </h3>
-          <span className="text-xs text-[#64748B]">
+          <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">
             Click any hour row to synchronize KPIs, 3D workspace, and Smart City Twin
           </span>
         </div>
 
-        <div className="max-h-[340px] overflow-auto rounded-lg border border-[#E2E8F0]">
+        <div className="max-h-[340px] overflow-auto rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
           <table className="w-full border-collapse text-left text-xs">
-            <thead className="sticky top-0 bg-[#F8FAFC] text-[#64748B] border-b border-[#E2E8F0]">
+            <thead className="sticky top-0 bg-[#F8FAFC] dark:bg-[#0B1220] text-[#64748B] dark:text-[#94A3B8] border-b border-[#E2E8F0] dark:border-[#334155]">
               <tr>
                 <th className="py-2 px-3 font-medium">Hour</th>
                 <th className="py-2 px-3 text-right font-medium">Load (MW)</th>
@@ -869,7 +869,7 @@ export function DispatchPage() {
                 <th className="py-2 px-3 text-right font-medium">Cost (INR)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
               {daySummary.hourlyDispatches.map((h) => {
                 const isSel = h.hour === activeHour;
                 const solarWindMW = h.generatorSetpoints
@@ -881,36 +881,36 @@ export function DispatchPage() {
                     key={h.hour}
                     onClick={() => setActiveHour(h.hour)}
                     className={`cursor-pointer transition-colors ${
-                      isSel ? 'bg-[#EFF6FF] font-semibold' : 'hover:bg-[#F8FAFC]'
+                      isSel ? 'bg-[#EFF6FF] dark:bg-[#60A5FA]/15 font-semibold' : 'hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                     }`}
                   >
-                    <td className="py-2 px-3 font-mono-tabular text-[#0F172A]">
+                    <td className="py-2 px-3 font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {h.timestampLabel}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-2 px-3 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {h.totalDemandMW.toFixed(1)}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono-tabular text-[#10B981]">
+                    <td className="py-2 px-3 text-right font-mono-tabular text-[#10B981] dark:text-[#34D399]">
                       {solarWindMW.toFixed(1)}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono-tabular text-[#2563EB]">
+                    <td className="py-2 px-3 text-right font-mono-tabular text-[#2563EB] dark:text-[#60A5FA]">
                       {dispMW.toFixed(1)}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono-tabular text-[#06B6D4]">
+                    <td className="py-2 px-3 text-right font-mono-tabular text-[#06B6D4] dark:text-[#22D3EE]">
                       {h.batteryNetPowerMW >= 0 ? '+' : ''}
                       {h.batteryNetPowerMW.toFixed(1)}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-2 px-3 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {h.batterySocPercent.toFixed(1)}%
                     </td>
                     <td
                       className={`py-2 px-3 text-right font-mono-tabular ${
-                        h.unservedEnergyMW > 0.1 ? 'text-rose-600' : 'text-[#64748B]'
+                        h.unservedEnergyMW > 0.1 ? 'text-rose-600 dark:text-rose-400' : 'text-[#64748B] dark:text-[#94A3B8]'
                       }`}
                     >
                       {h.unservedEnergyMW.toFixed(2)}
                     </td>
-                    <td className="py-2 px-3 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-2 px-3 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       ₹{formatInr(h.dispatchCostInr)}
                     </td>
                   </tr>

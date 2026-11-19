@@ -5,11 +5,11 @@ interface StatusBadgeProps {
 }
 
 const TONE_MAP: Record<StatusBadgeProps['tone'], { glyph: string; colorClass: string }> = {
-  nominal: { glyph: '●', colorClass: 'text-[#10B981]' },
-  info: { glyph: '◆', colorClass: 'text-[#2563EB]' },
-  warning: { glyph: '▲', colorClass: 'text-amber-600' },
-  deficit: { glyph: '✖', colorClass: 'text-rose-600' },
-  neutral: { glyph: '○', colorClass: 'text-[#64748B]' },
+  nominal: { glyph: '●', colorClass: 'text-[#10B981] dark:text-[#34D399]' },
+  info: { glyph: '◆', colorClass: 'text-[#2563EB] dark:text-[#60A5FA]' },
+  warning: { glyph: '▲', colorClass: 'text-amber-600 dark:text-amber-400' },
+  deficit: { glyph: '✖', colorClass: 'text-rose-600 dark:text-rose-400' },
+  neutral: { glyph: '○', colorClass: 'text-[#64748B] dark:text-[#94A3B8]' },
 };
 
 export function StatusBadge({ tone, label, className = '' }: StatusBadgeProps) {

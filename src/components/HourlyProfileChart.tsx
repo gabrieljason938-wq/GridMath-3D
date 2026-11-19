@@ -59,22 +59,22 @@ export function HourlyProfileChart({
 
   return (
     <div className="w-full">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-4 text-xs text-[#64748B]">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-4 text-xs text-[#64748B] dark:text-[#94A3B8]">
         <div className="flex flex-wrap items-center gap-5">
-          <span className="inline-flex items-center gap-1.5 font-medium text-[#0F172A]">
-            <span className="h-0.5 w-4 bg-[#2563EB]" />
+          <span className="inline-flex items-center gap-1.5 font-medium text-[#0F172A] dark:text-[#F8FAFC]">
+            <span className="h-0.5 w-4 bg-[#2563EB] dark:bg-[#60A5FA]" />
             Demand (MW)
           </span>
-          <span className="inline-flex items-center gap-1.5 font-medium text-[#0F172A]">
+          <span className="inline-flex items-center gap-1.5 font-medium text-[#0F172A] dark:text-[#F8FAFC]">
             <span className="h-2.5 w-2.5 rounded-sm bg-[#10B981]/25 border border-[#10B981]" />
             Renewable Gen (MW)
           </span>
-          <span className="inline-flex items-center gap-1.5 font-medium text-[#0F172A]">
+          <span className="inline-flex items-center gap-1.5 font-medium text-[#0F172A] dark:text-[#F8FAFC]">
             <span className="h-0.5 w-4 border-t-2 border-dashed border-[#06B6D4]" />
             Total Dispatched (MW)
           </span>
         </div>
-        <span className="font-mono-tabular text-[#0F172A]">
+        <span className="font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
           Selected: {activePoint.timestampLabel} · {activePoint.totalDemandMW.toFixed(1)} MW demand ·{' '}
           {activePoint.renewableGenerationMW.toFixed(1)} MW RE
         </span>
@@ -96,14 +96,14 @@ export function HourlyProfileChart({
                 y1={y}
                 x2={width - padRight}
                 y2={y}
-                stroke="#E2E8F0"
+                stroke="var(--border-hairline)"
                 strokeWidth={1}
               />
               <text
                 x={padLeft - 8}
                 y={y + 3.5}
                 textAnchor="end"
-                className="fill-[#64748B] font-mono text-[10px]"
+                className="fill-[#64748B] dark:fill-[#94A3B8] font-mono text-[10px]"
               >
                 {Math.round(tick)}
               </text>
@@ -125,7 +125,7 @@ export function HourlyProfileChart({
         />
 
         {/* Demand curve */}
-        <path d={demandPath} fill="none" stroke="#2563EB" strokeWidth={2.5} />
+        <path d={demandPath} fill="none" stroke="var(--accent-primary)" strokeWidth={2.5} />
 
         {/* Active hour vertical cursor */}
         <line
@@ -133,11 +133,18 @@ export function HourlyProfileChart({
           y1={padTop}
           x2={activeX}
           y2={padTop + plotH}
-          stroke="#2563EB"
+          stroke="var(--accent-primary)"
           strokeWidth={1.25}
           strokeDasharray="3 3"
         />
-        <circle cx={activeX} cy={activeY} r={4.5} fill="#2563EB" stroke="#FFFFFF" strokeWidth={2} />
+        <circle
+          cx={activeX}
+          cy={activeY}
+          r={4.5}
+          fill="var(--accent-primary)"
+          stroke="var(--bg-surface)"
+          strokeWidth={2}
+        />
 
         {/* Clickable & keyboard-accessible hour columns */}
         {dispatches.map((d) => {
@@ -180,7 +187,7 @@ export function HourlyProfileChart({
               x={x}
               y={height - 8}
               textAnchor="middle"
-              className="fill-[#64748B] font-mono text-[10px]"
+              className="fill-[#64748B] dark:fill-[#94A3B8] font-mono text-[10px]"
             >
               {hr.toString().padStart(2, '0')}:00
             </text>

@@ -94,15 +94,15 @@ export function ExperimentsPage() {
   return (
     <div className="mx-auto max-w-[1440px] space-y-6">
       {/* Workspace Mode Segmented Switch */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] px-5 py-3.5">
-        <div className="flex items-center gap-1 rounded-lg bg-[#F8FAFC] p-1">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-5 py-3.5">
+        <div className="flex items-center gap-1 rounded-lg bg-[#F8FAFC] dark:bg-[#0B1220] p-1">
           <button
             type="button"
             onClick={() => setWorkspaceTab('scientific')}
             className={`rounded-md px-3.5 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
               workspaceTab === 'scientific'
-                ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
             }`}
           >
             Scientific Experiment Suite (8)
@@ -112,16 +112,16 @@ export function ExperimentsPage() {
             onClick={() => setWorkspaceTab('scenarios')}
             className={`rounded-md px-3.5 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
               workspaceTab === 'scenarios'
-                ? 'bg-[#FFFFFF] text-[#2563EB] shadow-xs'
-                : 'text-[#64748B] hover:text-[#0F172A]'
+                ? 'bg-[#FFFFFF] dark:bg-[#172033] text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
             }`}
           >
             Unified Twin Scenarios &amp; History
           </button>
         </div>
 
-        <div className="text-xs text-[#64748B]">
-          Active Twin: <strong className="text-[#0F172A]">{activeScenario.name}</strong> ·{' '}
+        <div className="text-xs text-[#64748B] dark:text-[#94A3B8]">
+          Active Twin: <strong className="text-[#0F172A] dark:text-[#F8FAFC]">{activeScenario.name}</strong> ·{' '}
           <span className="font-mono-tabular">t = {activeHour.toString().padStart(2, '0')}:00</span>
         </div>
       </div>
@@ -131,20 +131,20 @@ export function ExperimentsPage() {
       ) : (
         <>
           {/* Unified Twin Control & Deterministic Playback Header */}
-          <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4">
+          <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div className="max-w-2xl space-y-1">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
-                  <span className="font-medium text-[#2563EB]">Single Authoritative Twin State</span>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
+                  <span className="font-medium text-[#2563EB] dark:text-[#60A5FA]">Single Authoritative Twin State</span>
                   <span aria-hidden="true">·</span>
                   <span className="font-mono-tabular">{simulationTimestampIso}</span>
                   <span aria-hidden="true">·</span>
                   <span className="font-mono-tabular">Recalculated in {lastComputeMs} ms</span>
                 </div>
-                <h2 className="text-lg font-semibold text-[#0F172A]">
+                <h2 className="text-lg font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   Scenario Simulation, Weather Perturbations &amp; Calculation History
                 </h2>
-                <p className="text-sm text-[#64748B]">
+                <p className="text-sm text-[#64748B] dark:text-[#94A3B8]">
               Every scenario override, weather shift, and generator capacity adjustment propagates deterministically through Householder QR forecasting, Two-Phase Bounded Simplex LP optimization, and the 3D Smart City Digital Twin.
             </p>
           </div>
@@ -155,15 +155,15 @@ export function ExperimentsPage() {
               onClick={() => (isPlaying ? pauseSimulation() : playSimulation())}
               className={`inline-flex h-9 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                 isPlaying
-                  ? 'border-[#2563EB] bg-[#EFF6FF] text-[#2563EB]'
-                  : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] hover:bg-[#F8FAFC]'
+                  ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#EFF6FF] dark:bg-[#60A5FA]/15 text-[#2563EB] dark:text-[#60A5FA]'
+                  : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
               }`}
             >
               {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
               {isPlaying ? 'Pause' : 'Play Cycle'}
             </button>
 
-            <div className="flex items-center rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-0.5 text-xs">
+            <div className="flex items-center rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-0.5 text-xs">
               {SPEED_OPTIONS.map((spd) => (
                 <button
                   key={spd}
@@ -171,8 +171,8 @@ export function ExperimentsPage() {
                   onClick={() => setPlaybackSpeed(spd)}
                   className={`rounded-md px-2 py-1 font-mono-tabular transition-colors ${
                     playbackSpeed === spd
-                      ? 'bg-[#FFFFFF] font-semibold text-[#2563EB] shadow-xs'
-                      : 'text-[#64748B] hover:text-[#0F172A]'
+                      ? 'bg-[#FFFFFF] dark:bg-[#172033] font-semibold text-[#2563EB] dark:text-[#60A5FA] shadow-xs'
+                      : 'text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]'
                   }`}
                 >
                   {spd}×
@@ -183,9 +183,9 @@ export function ExperimentsPage() {
             <button
               type="button"
               onClick={resetSimulation}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
             >
-              <RotateCcw className="h-3.5 w-3.5 text-[#64748B]" />
+              <RotateCcw className="h-3.5 w-3.5 text-[#64748B] dark:text-[#94A3B8]" />
               Reset Twin
             </button>
 
@@ -200,7 +200,7 @@ export function ExperimentsPage() {
         </div>
 
         {/* Active KPI Telemetry Strip */}
-        <div className="grid grid-cols-2 gap-4 border-t border-[#E2E8F0] pt-4 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-4 sm:grid-cols-4">
           <MetricCard
             label="Active Peak Demand"
             value={daySummary.predictedPeakDemandMW.toFixed(1)}
@@ -233,28 +233,28 @@ export function ExperimentsPage() {
       {/* Interactive Weather Controls & Generator Capacity Overrides */}
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         {/* Weather & Forecast Coupling Controls */}
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4 xl:col-span-5">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4 xl:col-span-5">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Weather &amp; Forecast Coupling Controls
             </h3>
             <button
               type="button"
               onClick={resetWeatherControls}
-              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] px-2.5 py-1 text-[11px] font-medium text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1 text-[11px] font-medium text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
             >
               <RotateCcw className="h-3 w-3" />
               Reset Weather
             </button>
           </div>
 
-          <div className="space-y-3 border-t border-[#E2E8F0] pt-3 text-xs">
+          <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs">
             <div className="space-y-1">
               <div className="flex justify-between">
-                <label htmlFor="weather-temp-offset" className="font-medium text-[#0F172A]">
+                <label htmlFor="weather-temp-offset" className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                   Temperature Perturbation
                 </label>
-                <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                   {draftWeather.temperatureDeltaDegC >= 0 ? '+' : ''}
                   {draftWeather.temperatureDeltaDegC.toFixed(1)} °C
                 </span>
@@ -278,10 +278,10 @@ export function ExperimentsPage() {
 
             <div className="space-y-1">
               <div className="flex justify-between">
-                <label htmlFor="weather-solar-scale" className="font-medium text-[#0F172A]">
+                <label htmlFor="weather-solar-scale" className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                   Solar Irradiance Availability
                 </label>
-                <span className="font-mono-tabular font-semibold text-[#10B981]">
+                <span className="font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
                   {Math.round(draftWeather.solarIrradianceScale * 100)}%
                 </span>
               </div>
@@ -304,10 +304,10 @@ export function ExperimentsPage() {
 
             <div className="space-y-1">
               <div className="flex justify-between">
-                <label htmlFor="weather-wind-scale" className="font-medium text-[#0F172A]">
+                <label htmlFor="weather-wind-scale" className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                   Wind Corridor Resource
                 </label>
-                <span className="font-mono-tabular font-semibold text-[#06B6D4]">
+                <span className="font-mono-tabular font-semibold text-[#06B6D4] dark:text-[#22D3EE]">
                   {Math.round(draftWeather.windResourceScale * 100)}%
                 </span>
               </div>
@@ -330,10 +330,10 @@ export function ExperimentsPage() {
 
             <div className="space-y-1">
               <div className="flex justify-between">
-                <label htmlFor="demand-scale-factor" className="font-medium text-[#0F172A]">
+                <label htmlFor="demand-scale-factor" className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                   Demand Scaling Factor
                 </label>
-                <span className="font-mono-tabular font-semibold text-[#0F172A]">
+                <span className="font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                   {Math.round(draftWeather.demandScaleFactor * 100)}%
                 </span>
               </div>
@@ -354,12 +354,12 @@ export function ExperimentsPage() {
               />
             </div>
 
-            <label className="flex cursor-pointer items-center justify-between border-t border-[#E2E8F0] pt-3">
+            <label className="flex cursor-pointer items-center justify-between border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div>
-                <span className="block font-medium text-[#0F172A]">
+                <span className="block font-medium text-[#0F172A] dark:text-[#F8FAFC]">
                   Couple QR Demand Forecast to Dispatch
                 </span>
-                <span className="text-[11px] text-[#64748B]">
+                <span className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                   Feeds Householder QR prediction D(t) directly into LP dispatch
                 </span>
               </div>
@@ -374,22 +374,22 @@ export function ExperimentsPage() {
         </div>
 
         {/* Generator Capacity & Battery Initial SoC Controls */}
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4 xl:col-span-7">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4 xl:col-span-7">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Generator Capacity, Outages &amp; BESS Initial SoC Controls
             </h3>
             <button
               type="button"
               onClick={resetGeneratorOverrides}
-              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] px-2.5 py-1 text-[11px] font-medium text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1 text-[11px] font-medium text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
             >
               <RotateCcw className="h-3 w-3" />
               Reset Fleet
             </button>
           </div>
 
-          <div className="space-y-3 border-t border-[#E2E8F0] pt-3 text-xs">
+          <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3 text-xs">
             {activeScenario.generators.map((gen) => {
               const ov = generatorOverrides[gen.id];
               const isAvail = ov?.available ?? gen.available;
@@ -398,11 +398,11 @@ export function ExperimentsPage() {
               return (
                 <div
                   key={gen.id}
-                  className="grid grid-cols-1 items-center gap-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 sm:grid-cols-12"
+                  className="grid grid-cols-1 items-center gap-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-3.5 py-2.5 sm:grid-cols-12"
                 >
                   <div className="sm:col-span-4">
-                    <div className="font-medium text-[#0F172A]">{gen.name}</div>
-                    <div className="text-[11px] text-[#64748B]">
+                    <div className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">{gen.name}</div>
+                    <div className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                       P_min {gen.minMW} MW · Ramp {gen.rampRateMWPerHour} MW/h
                     </div>
                   </div>
@@ -423,7 +423,7 @@ export function ExperimentsPage() {
                       aria-label={`${gen.name} max capacity`}
                       className="h-1.5 w-full cursor-pointer accent-[#2563EB]"
                     />
-                    <span className="font-mono-tabular w-16 text-right font-semibold text-[#0F172A]">
+                    <span className="font-mono-tabular w-16 text-right font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                       {curMax.toFixed(0)} MW
                     </span>
                   </div>
@@ -439,8 +439,8 @@ export function ExperimentsPage() {
                       }
                       className={`rounded-md border px-2.5 py-1 text-[11px] font-medium transition-colors whitespace-nowrap ${
                         isAvail
-                          ? 'border-[#10B981]/40 bg-[#ECFDF5] text-[#047857]'
-                          : 'border-rose-300 bg-rose-50 text-rose-700'
+                          ? 'border-[#10B981]/40 bg-[#ECFDF5] dark:bg-[#10B981]/15 text-[#047857] dark:text-[#34D399]'
+                          : 'border-rose-300 dark:border-rose-500/40 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300'
                       }`}
                     >
                       {isAvail ? 'Online' : 'Outage (0 MW)'}
@@ -451,10 +451,10 @@ export function ExperimentsPage() {
             })}
 
             {/* BESS Initial SoC Control */}
-            <div className="grid grid-cols-1 items-center gap-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3.5 py-2.5 sm:grid-cols-12">
+            <div className="grid grid-cols-1 items-center gap-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-3.5 py-2.5 sm:grid-cols-12">
               <div className="sm:col-span-4">
-                <div className="font-medium text-[#0F172A]">Central LFP BESS Initial SoC</div>
-                <div className="text-[11px] text-[#64748B]">
+                <div className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Central LFP BESS Initial SoC</div>
+                <div className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                   Window [{minSocMWh.toFixed(0)}, {maxSocMWh.toFixed(0)}] MWh
                 </div>
               </div>
@@ -469,12 +469,12 @@ export function ExperimentsPage() {
                   aria-label="Battery initial state of charge"
                   className="h-1.5 w-full cursor-pointer accent-[#06B6D4]"
                 />
-                <span className="font-mono-tabular w-20 text-right font-semibold text-[#06B6D4]">
+                <span className="font-mono-tabular w-20 text-right font-semibold text-[#06B6D4] dark:text-[#22D3EE]">
                   {activeBatteryInit.toFixed(0)} MWh
                 </span>
               </div>
               <div className="sm:col-span-3 flex justify-end">
-                <span className="font-mono-tabular text-[11px] text-[#64748B]">
+                <span className="font-mono-tabular text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                   {((activeBatteryInit / activeScenario.battery.capacityMWh) * 100).toFixed(1)}% SoC
                 </span>
               </div>
@@ -484,13 +484,13 @@ export function ExperimentsPage() {
       </section>
 
       {/* 8-Scenario Benchmark Comparison Matrix */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               8-Scenario Digital Twin Comparison Matrix
             </h3>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
               Each scenario modifies only its target operational parameters while preserving all unrelated microgrid settings, evaluated via the Two-Phase Bounded Simplex LP solver.
             </p>
           </div>
@@ -500,7 +500,7 @@ export function ExperimentsPage() {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+              <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                 <th className="py-2.5 pr-4 font-medium">Scenario &amp; Delta Overrides</th>
                 <th className="py-2.5 pr-4 text-right font-medium">Peak (MW)</th>
                 <th className="py-2.5 pr-4 text-right font-medium">Energy (MWh)</th>
@@ -512,46 +512,46 @@ export function ExperimentsPage() {
                 <th className="py-2.5 font-medium">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
               {benchmarkRows.map((row) => {
                 const isActive = row.scenario.id === activeScenarioId;
                 return (
                   <tr
                     key={row.scenario.id}
-                    className={isActive ? 'bg-[#EFF6FF]/65' : 'hover:bg-[#F8FAFC]'}
+                    className={isActive ? 'bg-[#EFF6FF]/65 dark:bg-[#60A5FA]/15' : 'hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'}
                   >
                     <td className="py-3 pr-4">
-                      <div className="font-semibold text-[#0F172A]">{row.scenario.name}</div>
-                      <div className="text-[11px] text-[#64748B]">
+                      <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{row.scenario.name}</div>
+                      <div className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                         {(row.scenario.changedProperties ?? [row.scenario.seasonTag]).join(' · ')}
                       </div>
                     </td>
-                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {row.peakDemandMW.toFixed(1)}
                     </td>
-                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                       {row.dailyEnergyMWh.toFixed(1)}
                     </td>
-                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#10B981]">
+                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#10B981] dark:text-[#34D399]">
                       {row.averageRenewableSharePercent.toFixed(1)}%
                     </td>
-                    <td className="py-3 pr-4 text-right font-mono-tabular font-semibold text-[#0F172A]">
+                    <td className="py-3 pr-4 text-right font-mono-tabular font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                       ₹{formatInr(row.totalDailyCostInr)}
                     </td>
                     <td
                       className={`py-3 pr-4 text-right font-mono-tabular ${
-                        row.costDeltaVsNormalPercent > 0 ? 'text-amber-700' : 'text-[#10B981]'
+                        row.costDeltaVsNormalPercent > 0 ? 'text-amber-700 dark:text-amber-300' : 'text-[#10B981] dark:text-[#34D399]'
                       }`}
                     >
                       {row.costDeltaVsNormalPercent > 0 ? '+' : ''}
                       {row.costDeltaVsNormalPercent.toFixed(2)}%
                     </td>
-                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#64748B]">
+                    <td className="py-3 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       {row.totalEmissionsTonnesCO2e.toFixed(2)}
                     </td>
                     <td
                       className={`py-3 pr-4 text-right font-mono-tabular ${
-                        row.unservedEnergyMWh > 0.1 ? 'font-semibold text-rose-600' : 'text-[#64748B]'
+                        row.unservedEnergyMWh > 0.1 ? 'font-semibold text-rose-600 dark:text-rose-400' : 'text-[#64748B] dark:text-[#94A3B8]'
                       }`}
                     >
                       {row.unservedEnergyMWh.toFixed(2)}
@@ -563,8 +563,8 @@ export function ExperimentsPage() {
                         disabled={isActive}
                         className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                           isActive
-                            ? 'bg-[#2563EB]/10 text-[#2563EB]'
-                            : 'border border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] hover:bg-[#F8FAFC]'
+                            ? 'bg-[#2563EB]/10 text-[#2563EB] dark:text-[#60A5FA]'
+                            : 'border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                         }`}
                       >
                         {isActive ? 'Active' : 'Activate'}
@@ -579,17 +579,17 @@ export function ExperimentsPage() {
       </section>
 
       {/* Calculation History Audit Log */}
-      <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-3">
+      <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <h3 className="text-base font-semibold text-[#0F172A]">
+            <h3 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Deterministic Calculation History
             </h3>
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
               Chronological record of synchronized Digital Twin recalculations across scenario, weather, forecast, and dispatch updates.
             </p>
           </div>
-          <span className="font-mono-tabular text-xs text-[#64748B]">
+          <span className="font-mono-tabular text-xs text-[#64748B] dark:text-[#94A3B8]">
             {calculationHistory.length} recent evaluations
           </span>
         </div>
@@ -597,7 +597,7 @@ export function ExperimentsPage() {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-xs">
             <thead>
-              <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+              <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                 <th className="py-2 pr-4 font-medium">Trigger Event</th>
                 <th className="py-2 pr-4 font-medium">Scenario</th>
                 <th className="py-2 pr-4 text-right font-medium">Peak (MW)</th>
@@ -609,30 +609,30 @@ export function ExperimentsPage() {
                 <th className="py-2 text-right font-medium">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
               {calculationHistory.map((item) => (
-                <tr key={item.id} className="hover:bg-[#F8FAFC]">
-                  <td className="py-2 pr-4 font-medium text-[#0F172A]">{item.trigger}</td>
-                  <td className="py-2 pr-4 text-[#64748B]">{item.scenarioName}</td>
-                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                <tr key={item.id} className="hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]">
+                  <td className="py-2 pr-4 font-medium text-[#0F172A] dark:text-[#F8FAFC]">{item.trigger}</td>
+                  <td className="py-2 pr-4 text-[#64748B] dark:text-[#94A3B8]">{item.scenarioName}</td>
+                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                     {item.peakDemandMW.toFixed(1)}
                   </td>
-                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                     ₹{formatInr(item.totalDailyCostInr)}
                   </td>
-                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B]">
+                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                     {item.totalEmissionsTonnesCO2e.toFixed(2)}
                   </td>
-                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#0F172A]">
+                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                     {item.unservedEnergyMWh.toFixed(2)}
                   </td>
-                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B]">
+                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                     {item.maxBalanceResidualMW.toExponential(1)}
                   </td>
-                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B]">
+                  <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                     {item.computeMs} ms
                   </td>
-                  <td className="py-2 text-right font-medium text-[#2563EB]">{item.solverStatus}</td>
+                  <td className="py-2 text-right font-medium text-[#2563EB] dark:text-[#60A5FA]">{item.solverStatus}</td>
                 </tr>
               ))}
             </tbody>

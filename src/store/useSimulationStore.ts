@@ -106,6 +106,7 @@ interface SimulationState {
   playSimulation: () => void;
   pauseSimulation: () => void;
   resetSimulation: () => void;
+  exitSessionToLanding: () => void;
   setPlaybackSpeed: (speed: PlaybackSpeed) => void;
   setRenderQuality: (quality: RenderQuality) => void;
   setEnvironmentMode: (mode: EnvironmentMode) => void;
@@ -429,6 +430,34 @@ export const useSimulationStore = create<SimulationState>((set, get) => {
       addNotification({
         title: 'Digital Twin Reset',
         detail: `Restored ${baseTarget.name} at 14:00 IST with default weather & fleet parameters.`,
+        tone: 'info',
+      });
+    },
+
+    exitSessionToLanding: () => {
+      const { scenarios, activeScenarioId, addNotification } = get();
+      const baseTarget = scenarios.find((s) => s.id === activeScenarioId) ?? scenarios[0];
+      const freshConfig = createDefaultDispatchConfig(baseTarget);
+      runAndCommit(
+        {
+          isPlaying: false,
+          activeHour: 14,
+          selectedNodeId: null,
+          environmentMode: 'day',
+          weatherControls: { ...DEFAULT_WEATHER_CONTROLS },
+          generatorOverrides: {},
+          batteryInitialSocOverrideMWh: null,
+          useForecastDrivenDemand: false,
+          customForecastSeries: null,
+          appliedForecastLabel: null,
+          dispatchConfig: freshConfig,
+        },
+        'Logout · Scenario Overrides Cleared',
+        baseTarget,
+      );
+      addNotification({
+        title: 'Returned to Landing Page',
+        detail: 'Active scenario overrides cleared. Pinned scientific experiments were preserved.',
         tone: 'info',
       });
     },

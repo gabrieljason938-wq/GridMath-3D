@@ -57,9 +57,9 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
   return (
     <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
       {/* Left Control & Editable Input Panel */}
-      <div className="space-y-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-4">
+      <div className="space-y-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-[#0F172A]">Editable Nodes &amp; Query</h3>
+          <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Editable Nodes &amp; Query</h3>
           <button
             type="button"
             onClick={() => {
@@ -68,44 +68,44 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
               setActiveOrder(1);
               setPlaying(false);
             }}
-            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline"
           >
             <RotateCcw className="h-3 w-3" />
             Reset
           </button>
         </div>
 
-        <label className="block text-xs text-[#64748B]">
+        <label className="block text-xs text-[#64748B] dark:text-[#94A3B8]">
           <span>Query Coordinate x* ({datasetMode === 'benchmark' ? 'dimensionless' : 'hour'})</span>
           <input
             type="number"
             step={0.25}
             value={queryX}
             onChange={(e) => setQueryX(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-lg border border-[#E2E8F0] px-3 py-1.5 font-mono-tabular text-sm text-[#0F172A] focus:border-[#2563EB] focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-3 py-1.5 font-mono-tabular text-sm text-[#0F172A] dark:text-[#F8FAFC] focus:border-[#2563EB] dark:focus:border-[#60A5FA] focus:outline-none"
           />
         </label>
 
-        <div className="max-h-56 overflow-y-auto rounded-lg border border-[#E2E8F0]">
+        <div className="max-h-56 overflow-y-auto rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-[#E2E8F0] bg-[#F8FAFC] text-[#64748B]">
+            <thead className="border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] text-[#64748B] dark:text-[#94A3B8]">
               <tr>
                 <th className="px-2.5 py-1.5 font-medium">i</th>
                 <th className="px-2.5 py-1.5 font-medium">xᵢ</th>
                 <th className="px-2.5 py-1.5 font-medium">f(xᵢ)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0] font-mono-tabular">
+            <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155] font-mono-tabular">
               {points.map((pt, idx) => (
                 <tr key={idx}>
-                  <td className="px-2.5 py-1 text-[#64748B]">{idx}</td>
+                  <td className="px-2.5 py-1 text-[#64748B] dark:text-[#94A3B8]">{idx}</td>
                   <td className="px-2 py-1">
                     <input
                       type="number"
                       step={0.5}
                       value={pt.x}
                       onChange={(e) => updatePoint(idx, 'x', Number(e.target.value) || 0)}
-                      className="w-20 rounded border border-[#E2E8F0] px-1.5 py-0.5 text-xs text-[#0F172A]"
+                      className="w-20 rounded border border-[#E2E8F0] dark:border-[#334155] px-1.5 py-0.5 text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                     />
                   </td>
                   <td className="px-2 py-1">
@@ -114,7 +114,7 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
                       step={1}
                       value={pt.y}
                       onChange={(e) => updatePoint(idx, 'y', Number(e.target.value) || 0)}
-                      className="w-24 rounded border border-[#E2E8F0] px-1.5 py-0.5 text-xs text-[#0F172A]"
+                      className="w-24 rounded border border-[#E2E8F0] dark:border-[#334155] px-1.5 py-0.5 text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                     />
                   </td>
                 </tr>
@@ -124,20 +124,20 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
         </div>
 
         {/* Step Controls for Divided Difference Order */}
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
           <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={() => setActiveOrder((o) => Math.max(1, o - 1))}
               aria-label="Previous divided difference order"
-              className="rounded border border-[#E2E8F0] p-1.5 text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="rounded border border-[#E2E8F0] dark:border-[#334155] p-1.5 text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               <StepBack className="h-3.5 w-3.5" />
             </button>
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex items-center gap-1 rounded border border-[#E2E8F0] px-2.5 py-1 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="inline-flex items-center gap-1 rounded border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
               Order {activeOrder}/{maxOrder}
@@ -146,7 +146,7 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
               type="button"
               onClick={() => setActiveOrder((o) => Math.min(maxOrder, o + 1))}
               aria-label="Next divided difference order"
-              className="rounded border border-[#E2E8F0] p-1.5 text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="rounded border border-[#E2E8F0] dark:border-[#334155] p-1.5 text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               <StepForward className="h-3.5 w-3.5" />
             </button>
@@ -154,9 +154,9 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
           <button
             type="button"
             onClick={() => onExport('newton-interpolation.json', result)}
-            className="inline-flex items-center gap-1 rounded-lg border border-[#E2E8F0] px-2.5 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+            className="inline-flex items-center gap-1 rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
           >
-            <Download className="h-3.5 w-3.5 text-[#2563EB]" />
+            <Download className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
             Export
           </button>
         </div>
@@ -164,13 +164,13 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
 
       {/* Center 3D Visualization + Mathematical Formula */}
       <div className="space-y-4 xl:col-span-8">
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="text-sm font-semibold text-[#0F172A]">
+              <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 1. Mathematical Formula — Newton Divided Difference Polynomial
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 Note: The mathematical function y = P(x) is strictly two-dimensional, displayed on an embedded coordinate plane in 3D space.
               </p>
             </div>
@@ -179,7 +179,7 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
               label={result.valid ? `Degree ${points.length - 1}` : 'Invalid Nodes'}
             />
           </div>
-          <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+          <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3">
             <KaTeXFormula
               displayMode
               tex="P_{n-1}(x) = b_0 + \sum_{k=1}^{n-1} f[x_0, x_1, \dots, x_k] \prod_{j=0}^{k-1} (x - x_j), \quad f[x_i,\dots,x_{i+k}] = \frac{f[x_{i+1},\dots,x_{i+k}] - f[x_i,\dots,x_{i+k-1}]}{x_{i+k} - x_i}"
@@ -196,15 +196,15 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
       </div>
 
       {/* Bottom Synchronized Panels: Step-by-Step Solution + Numerical Accuracy */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-7">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-7">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           2. Step-by-Step Divided Difference Table
         </h3>
         {result.valid ? (
           <div className="mt-3 overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs font-mono-tabular">
               <thead>
-                <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                   <th className="py-2 pr-3 font-medium">Order k</th>
                   <th className="py-2 pr-3 font-medium">Term</th>
                   <th className="py-2 pr-3 text-right font-medium">Numerator</th>
@@ -212,23 +212,23 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
                   <th className="py-2 text-right font-medium">Value</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 {result.steps
                   .filter((s) => s.order <= activeOrder || !playing)
                   .slice(0, 12)
                   .map((s, idx) => (
                     <tr key={idx} className={s.order === activeOrder ? 'bg-[#2563EB]/6' : ''}>
-                      <td className="py-1.5 pr-3 text-[#64748B]">{s.order}</td>
-                      <td className="py-1.5 pr-3 text-[#0F172A]">
+                      <td className="py-1.5 pr-3 text-[#64748B] dark:text-[#94A3B8]">{s.order}</td>
+                      <td className="py-1.5 pr-3 text-[#0F172A] dark:text-[#F8FAFC]">
                         [{s.startIndex}..{s.endIndex}]
                       </td>
-                      <td className="py-1.5 pr-3 text-right text-[#64748B]">
+                      <td className="py-1.5 pr-3 text-right text-[#64748B] dark:text-[#94A3B8]">
                         {s.numerator.toFixed(precision)}
                       </td>
-                      <td className="py-1.5 pr-3 text-right text-[#64748B]">
+                      <td className="py-1.5 pr-3 text-right text-[#64748B] dark:text-[#94A3B8]">
                         {s.denominator.toFixed(2)}
                       </td>
-                      <td className="py-1.5 text-right font-semibold text-[#2563EB]">
+                      <td className="py-1.5 text-right font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                         {s.value.toFixed(precision)}
                       </td>
                     </tr>
@@ -237,44 +237,44 @@ export function ExpInterpolationPanel({ datasetMode, precision, onExport }: Prop
             </table>
           </div>
         ) : (
-          <p className="mt-2 text-xs text-rose-600">{result.error}</p>
+          <p className="mt-2 text-xs text-rose-600 dark:text-rose-400">{result.error}</p>
         )}
       </div>
 
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-5">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-5">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           4. Numerical Accuracy &amp; Validation
         </h3>
-        <dl className="mt-3 divide-y divide-[#E2E8F0] text-xs">
+        <dl className="mt-3 divide-y divide-[#E2E8F0] dark:divide-[#334155] text-xs">
           <div className="flex justify-between py-2">
-            <dt className="text-[#64748B]">Evaluated P(x*)</dt>
-            <dd className="font-mono-tabular font-semibold text-[#2563EB]">
+            <dt className="text-[#64748B] dark:text-[#94A3B8]">Evaluated P(x*)</dt>
+            <dd className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
               {result.interpolatedY.toFixed(precision)}
             </dd>
           </div>
           <div className="flex justify-between py-2">
-            <dt className="text-[#64748B]">Max Node Collocation Residual</dt>
-            <dd className="font-mono-tabular font-semibold text-[#10B981]">
+            <dt className="text-[#64748B] dark:text-[#94A3B8]">Max Node Collocation Residual</dt>
+            <dd className="font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
               {result.maxNodeResidual.toExponential(3)}
             </dd>
           </div>
           {result.exactBenchmarkY !== null ? (
             <>
               <div className="flex justify-between py-2">
-                <dt className="text-[#64748B]">Exact Benchmark exp(x*)</dt>
-                <dd className="font-mono-tabular text-[#0F172A]">
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Exact Benchmark exp(x*)</dt>
+                <dd className="font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                   {result.exactBenchmarkY.toFixed(precision)}
                 </dd>
               </div>
               <div className="flex justify-between py-2">
-                <dt className="text-[#64748B]">Absolute Interpolation Error</dt>
-                <dd className="font-mono-tabular font-semibold text-[#06B6D4]">
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Absolute Interpolation Error</dt>
+                <dd className="font-mono-tabular font-semibold text-[#06B6D4] dark:text-[#22D3EE]">
                   {result.benchmarkError?.toExponential(3)}
                 </dd>
               </div>
             </>
           ) : (
-            <div className="py-2 text-[#64748B]">
+            <div className="py-2 text-[#64748B] dark:text-[#94A3B8]">
               Analytical error comparison available when switching Dataset to Analytical Benchmark (exp(x)).
             </div>
           )}

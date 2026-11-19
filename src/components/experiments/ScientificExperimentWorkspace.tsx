@@ -107,13 +107,13 @@ export function ScientificExperimentWorkspace() {
     <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
       {/* Left Column: 8-Experiment Navigator & Parameter Calibration */}
       <aside className="space-y-4 xl:col-span-4">
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 space-y-3">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 space-y-3">
           <div className="flex items-center justify-between gap-2">
             <div>
-              <h3 className="text-sm font-semibold text-[#0F172A]">
+              <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 Scientific Experiment Suite (8)
               </h3>
-              <p className="text-xs text-[#64748B]">
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
                 Reproducible numerical, forecasting, and optimization benchmarks.
               </p>
             </div>
@@ -127,7 +127,7 @@ export function ScientificExperimentWorkspace() {
             </button>
           </div>
 
-          <div className="space-y-1.5 border-t border-[#E2E8F0] pt-3">
+          <div className="space-y-1.5 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
             {EXPERIMENT_CATALOG.map((exp) => {
               const active = exp.id === activeExperimentId;
               const pinned = Boolean(pinnedExperiments[exp.id]);
@@ -138,20 +138,20 @@ export function ScientificExperimentWorkspace() {
                   onClick={() => setActiveExperimentId(exp.id)}
                   className={`w-full rounded-lg border p-3 text-left transition-colors ${
                     active
-                      ? 'border-[#2563EB] bg-[#EFF6FF]/65'
-                      : 'border-[#E2E8F0] bg-[#FFFFFF] hover:bg-[#F8FAFC]'
+                      ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#EFF6FF]/65 dark:bg-[#60A5FA]/15'
+                      : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2 text-[11px]">
-                    <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                    <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                       {exp.code} · {exp.category}
                     </span>
                     {pinned ? (
-                      <span className="font-medium text-[#10B981]">Pinned</span>
+                      <span className="font-medium text-[#10B981] dark:text-[#34D399]">Pinned</span>
                     ) : null}
                   </div>
-                  <div className="mt-0.5 text-xs font-semibold text-[#0F172A]">{exp.title}</div>
-                  <p className="mt-1 text-[11px] leading-relaxed text-[#64748B]">
+                  <div className="mt-0.5 text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{exp.title}</div>
+                  <p className="mt-1 text-[11px] leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
                     {exp.shortDescription}
                   </p>
                 </button>
@@ -161,13 +161,13 @@ export function ScientificExperimentWorkspace() {
         </div>
 
         {/* Context-Sensitive Algorithm Parameter Calibration */}
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 space-y-3 text-xs">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 space-y-3 text-xs">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-semibold text-[#0F172A]">Algorithm Parameters</h4>
+            <h4 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Algorithm Parameters</h4>
             <button
               type="button"
               onClick={() => updateExperimentParams({ ...DEFAULT_EXPERIMENT_PARAMETERS })}
-              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] px-2 py-1 text-[11px] font-medium text-[#64748B] hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+              className="inline-flex items-center gap-1 rounded-md border border-[#E2E8F0] dark:border-[#334155] px-2 py-1 text-[11px] font-medium text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
             >
               <RotateCcw className="h-3 w-3" />
               Defaults
@@ -175,9 +175,9 @@ export function ScientificExperimentWorkspace() {
           </div>
 
           {activeExperimentId === 'forecast-accuracy' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <label className="block space-y-1">
-                <span className="font-medium text-[#0F172A]">Primary Holdout Window</span>
+                <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Primary Holdout Window</span>
                 <select
                   value={experimentParams.holdoutWindowHours}
                   onChange={(e) =>
@@ -185,7 +185,7 @@ export function ScientificExperimentWorkspace() {
                       holdoutWindowHours: Number(e.target.value) as 24 | 48 | 72,
                     })
                   }
-                  className="w-full rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A]"
+                  className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 >
                   <option value={24}>24 hours (1 day out-of-sample)</option>
                   <option value={48}>48 hours (2 days out-of-sample)</option>
@@ -194,7 +194,7 @@ export function ScientificExperimentWorkspace() {
               </label>
 
               <label className="block space-y-1">
-                <span className="font-medium text-[#0F172A]">Weather Forecast Regime</span>
+                <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Weather Forecast Regime</span>
                 <select
                   value={experimentParams.forecastWeatherId}
                   onChange={(e) =>
@@ -202,7 +202,7 @@ export function ScientificExperimentWorkspace() {
                       forecastWeatherId: e.target.value as WeatherScenarioId,
                     })
                   }
-                  className="w-full rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-2.5 py-1.5 text-xs text-[#0F172A]"
+                  className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-2.5 py-1.5 text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 >
                   <option value="nominal">Historical Mean (Nominal)</option>
                   <option value="heatwave">Heatwave (+4.5 °C)</option>
@@ -213,9 +213,9 @@ export function ScientificExperimentWorkspace() {
           ) : null}
 
           {activeExperimentId === 'integration-accuracy' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <label className="block space-y-1">
-                <span className="font-medium text-[#0F172A]">Analytic Benchmark Function</span>
+                <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Analytic Benchmark Function</span>
                 <select
                   value={experimentParams.integrandId}
                   onChange={(e) =>
@@ -226,7 +226,7 @@ export function ScientificExperimentWorkspace() {
                         | 'sinusoidal-peak',
                     })
                   }
-                  className="w-full rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-2.5 py-1.5 text-xs text-[#0F172A]"
+                  className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-2.5 py-1.5 text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 >
                   <option value="diurnal-load">Diurnal Harmonic Load [0, 24h]</option>
                   <option value="cubic-polynomial">Exact Cubic Polynomial [0, 12h]</option>
@@ -235,7 +235,7 @@ export function ScientificExperimentWorkspace() {
               </label>
 
               <label className="block space-y-1">
-                <span className="font-medium text-[#0F172A]">Maximum Subdivisions (n)</span>
+                <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Maximum Subdivisions (n)</span>
                 <select
                   value={experimentParams.maxSubdivisions}
                   onChange={(e) =>
@@ -243,7 +243,7 @@ export function ScientificExperimentWorkspace() {
                       maxSubdivisions: Number(e.target.value) as 16 | 32 | 64,
                     })
                   }
-                  className="w-full rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A]"
+                  className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 >
                   <option value={16}>n up to 16</option>
                   <option value={32}>n up to 32</option>
@@ -254,11 +254,11 @@ export function ScientificExperimentWorkspace() {
           ) : null}
 
           {activeExperimentId === 'gaussian-stability' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Max Hilbert Dimension n</span>
-                  <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Max Hilbert Dimension n</span>
+                  <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                     H_{experimentParams.hilbertMaxDim}
                   </span>
                 </div>
@@ -279,8 +279,8 @@ export function ScientificExperimentWorkspace() {
 
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Small Pivot Perturbation ε</span>
-                  <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Small Pivot Perturbation ε</span>
+                  <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                     10^(-{experimentParams.pivotEpsilonExp})
                   </span>
                 </div>
@@ -300,11 +300,11 @@ export function ScientificExperimentWorkspace() {
           ) : null}
 
           {activeExperimentId === 'regression-comparison' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Tightest Collinearity δ</span>
-                  <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Tightest Collinearity δ</span>
+                  <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                     10^(-{experimentParams.collinearityDeltaExp})
                   </span>
                 </div>
@@ -322,25 +322,25 @@ export function ScientificExperimentWorkspace() {
               </div>
 
               <label className="block space-y-1">
-                <span className="font-medium text-[#0F172A]">Deterministic PRNG Seed</span>
+                <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Deterministic PRNG Seed</span>
                 <input
                   type="number"
                   value={experimentParams.seed}
                   onChange={(e) =>
                     updateExperimentParams({ seed: Math.max(1, Number(e.target.value) || 1) })
                   }
-                  className="w-full rounded-lg border border-[#E2E8F0] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A]"
+                  className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1.5 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 />
               </label>
             </div>
           ) : null}
 
           {activeExperimentId === 'dispatch-vs-heuristic' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Carbon Pricing Benchmark</span>
-                  <span className="font-mono-tabular font-semibold text-[#10B981]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Carbon Pricing Benchmark</span>
+                  <span className="font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
                     ₹{experimentParams.carbonPriceSweepInr} / tCO₂e
                   </span>
                 </div>
@@ -360,11 +360,11 @@ export function ScientificExperimentWorkspace() {
           ) : null}
 
           {activeExperimentId === 'demand-sensitivity' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Upper Demand Multiplier</span>
-                  <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Upper Demand Multiplier</span>
+                  <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                     {Math.round(experimentParams.demandScaleMax * 100)}%
                   </span>
                 </div>
@@ -383,8 +383,8 @@ export function ScientificExperimentWorkspace() {
 
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Max Temp Perturbation ΔT</span>
-                  <span className="font-mono-tabular font-semibold text-[#2563EB]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Max Temp Perturbation ΔT</span>
+                  <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                     +{experimentParams.tempDeltaMaxDegC.toFixed(1)} °C
                   </span>
                 </div>
@@ -404,11 +404,11 @@ export function ScientificExperimentWorkspace() {
           ) : null}
 
           {activeExperimentId === 'renewable-sensitivity' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Minimum Solar Availability</span>
-                  <span className="font-mono-tabular font-semibold text-[#10B981]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Minimum Solar Availability</span>
+                  <span className="font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
                     {Math.round(experimentParams.solarScaleMin * 100)}%
                   </span>
                 </div>
@@ -427,8 +427,8 @@ export function ScientificExperimentWorkspace() {
 
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Maximum Wind Multiplier</span>
-                  <span className="font-mono-tabular font-semibold text-[#06B6D4]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Maximum Wind Multiplier</span>
+                  <span className="font-mono-tabular font-semibold text-[#06B6D4] dark:text-[#22D3EE]">
                     {Math.round(experimentParams.windScaleMax * 100)}%
                   </span>
                 </div>
@@ -448,11 +448,11 @@ export function ScientificExperimentWorkspace() {
           ) : null}
 
           {activeExperimentId === 'outage-stress' ? (
-            <div className="space-y-3 border-t border-[#E2E8F0] pt-3">
+            <div className="space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
               <div className="space-y-1">
                 <div className="flex justify-between">
-                  <span className="font-medium text-[#0F172A]">Initial BESS Reserve SoC</span>
-                  <span className="font-mono-tabular font-semibold text-[#06B6D4]">
+                  <span className="font-medium text-[#0F172A] dark:text-[#F8FAFC]">Initial BESS Reserve SoC</span>
+                  <span className="font-mono-tabular font-semibold text-[#06B6D4] dark:text-[#22D3EE]">
                     {experimentParams.outageBatterySocMWh.toFixed(0)} MWh
                   </span>
                 </div>
@@ -476,11 +476,11 @@ export function ScientificExperimentWorkspace() {
       {/* Main Experimental Workspace Stage */}
       <div className="space-y-6 xl:col-span-8">
         {/* Header & Reproducibility Actions */}
-        <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4">
+        <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="max-w-2xl space-y-1">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
-                <span className="font-mono-tabular font-semibold text-[#2563EB]">
+              <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
+                <span className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                   {result.manifest.experimentCode}
                 </span>
                 <span aria-hidden="true">·</span>
@@ -488,8 +488,8 @@ export function ScientificExperimentWorkspace() {
                 <span aria-hidden="true">·</span>
                 <span className="font-mono-tabular">Computed in {result.manifest.computeMs} ms</span>
               </div>
-              <h3 className="text-lg font-semibold text-[#0F172A]">{result.manifest.title}</h3>
-              <p className="text-xs leading-relaxed text-[#64748B]">{result.objectiveStatement}</p>
+              <h3 className="text-lg font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{result.manifest.title}</h3>
+              <p className="text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">{result.objectiveStatement}</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -498,8 +498,8 @@ export function ScientificExperimentWorkspace() {
                 onClick={handlePinToReport}
                 className={`inline-flex h-9 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                   isPinned
-                    ? 'border-[#10B981]/50 bg-[#ECFDF5] text-[#047857]'
-                    : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] hover:bg-[#F8FAFC]'
+                    ? 'border-[#10B981]/50 bg-[#ECFDF5] dark:bg-[#10B981]/15 text-[#047857] dark:text-[#34D399]'
+                    : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
                 }`}
               >
                 <BookmarkCheck className="h-3.5 w-3.5" />
@@ -508,17 +508,17 @@ export function ScientificExperimentWorkspace() {
               <button
                 type="button"
                 onClick={handleExportExperimentCsv}
-                className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
               >
-                <Download className="h-3.5 w-3.5 text-[#2563EB]" />
+                <Download className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
                 CSV
               </button>
               <button
                 type="button"
                 onClick={handleExportExperimentJson}
-                className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
               >
-                <Download className="h-3.5 w-3.5 text-[#06B6D4]" />
+                <Download className="h-3.5 w-3.5 text-[#06B6D4] dark:text-[#22D3EE]" />
                 Settings JSON
               </button>
               <Link
@@ -531,7 +531,7 @@ export function ScientificExperimentWorkspace() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 border-t border-[#E2E8F0] pt-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-4 sm:grid-cols-2 lg:grid-cols-4">
             {result.summaryMetrics.map((m) => (
               <MetricCard
                 key={m.label}
@@ -553,9 +553,9 @@ export function ScientificExperimentWorkspace() {
 
         {/* 3D Experimental Visualization & Mathematical Formulation */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-          <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 space-y-3 lg:col-span-7">
+          <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 space-y-3 lg:col-span-7">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <h4 className="text-sm font-semibold text-[#0F172A]">
+              <h4 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 3D Experimental Visualization
               </h4>
               <StatusBadge tone="info" label="Real Numerical Output" />
@@ -571,45 +571,45 @@ export function ScientificExperimentWorkspace() {
             </MathLabViewport>
           </div>
 
-          <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 space-y-4 lg:col-span-5">
-            <h4 className="text-sm font-semibold text-[#0F172A]">
+          <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 space-y-4 lg:col-span-5">
+            <h4 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               Mathematical Formulation &amp; Reproducibility Manifest
             </h4>
-            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3 overflow-x-auto">
+            <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3 overflow-x-auto">
               <KaTeXFormula displayMode tex={result.formulaTex} />
             </div>
-            <p className="text-xs leading-relaxed text-[#64748B]">{result.methodologyNote}</p>
+            <p className="text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">{result.methodologyNote}</p>
 
-            <dl className="divide-y divide-[#E2E8F0] border-t border-[#E2E8F0] text-[11px]">
+            <dl className="divide-y divide-[#E2E8F0] dark:divide-[#334155] border-t border-[#E2E8F0] dark:border-[#334155] text-[11px]">
               <div className="flex justify-between gap-3 py-1.5">
-                <dt className="text-[#64748B]">Dataset</dt>
-                <dd className="text-right font-medium text-[#0F172A]">{result.manifest.inputDataset}</dd>
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Dataset</dt>
+                <dd className="text-right font-medium text-[#0F172A] dark:text-[#F8FAFC]">{result.manifest.inputDataset}</dd>
               </div>
               <div className="flex justify-between gap-3 py-1.5">
-                <dt className="text-[#64748B]">Algorithm</dt>
-                <dd className="text-right font-medium text-[#0F172A]">{result.manifest.algorithmName}</dd>
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Algorithm</dt>
+                <dd className="text-right font-medium text-[#0F172A] dark:text-[#F8FAFC]">{result.manifest.algorithmName}</dd>
               </div>
               <div className="flex justify-between gap-3 py-1.5">
-                <dt className="text-[#64748B]">Tolerance</dt>
-                <dd className="text-right font-mono-tabular text-[#0F172A]">
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Tolerance</dt>
+                <dd className="text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                   {result.manifest.numericalTolerance}
                 </dd>
               </div>
               <div className="flex justify-between gap-3 py-1.5">
-                <dt className="text-[#64748B]">Random Seed</dt>
-                <dd className="text-right font-mono-tabular text-[#0F172A]">
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Random Seed</dt>
+                <dd className="text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                   {result.manifest.seedLabel}
                 </dd>
               </div>
               <div className="flex justify-between gap-3 py-1.5">
-                <dt className="text-[#64748B]">Software Version</dt>
-                <dd className="text-right font-mono-tabular text-[#0F172A]">
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Software Version</dt>
+                <dd className="text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                   {result.manifest.softwareVersion}
                 </dd>
               </div>
               <div className="flex justify-between gap-3 py-1.5">
-                <dt className="text-[#64748B]">Timestamp</dt>
-                <dd className="text-right font-mono-tabular text-[#64748B]">
+                <dt className="text-[#64748B] dark:text-[#94A3B8]">Timestamp</dt>
+                <dd className="text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                   {result.manifest.timestampIso}
                 </dd>
               </div>
@@ -618,15 +618,15 @@ export function ScientificExperimentWorkspace() {
         </section>
 
         {/* Intermediate Calculation & Accuracy Analysis Table */}
-        <section className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 space-y-4">
+        <section className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h4 className="text-base font-semibold text-[#0F172A]">
+              <h4 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 Experimental Results &amp; Accuracy Audit Table
               </h4>
-              <p className="text-xs text-[#64748B]">{result.researchIntegrityNote}</p>
+              <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">{result.researchIntegrityNote}</p>
             </div>
-            <span className="font-mono-tabular text-xs text-[#64748B]">
+            <span className="font-mono-tabular text-xs text-[#64748B] dark:text-[#94A3B8]">
               {result.tableRows.length} measured trials
             </span>
           </div>
@@ -634,7 +634,7 @@ export function ScientificExperimentWorkspace() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                   {result.tableHeaders.map((h, i) => (
                     <th
                       key={h}
@@ -647,18 +647,18 @@ export function ScientificExperimentWorkspace() {
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 {result.tableRows.map((row, rIdx) => (
-                  <tr key={rIdx} className="hover:bg-[#F8FAFC]">
+                  <tr key={rIdx} className="hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]">
                     {row.map((cell, cIdx) => (
                       <td
                         key={cIdx}
                         className={`py-2 pr-4 ${
                           cIdx === 0
-                            ? 'font-medium text-[#0F172A]'
+                            ? 'font-medium text-[#0F172A] dark:text-[#F8FAFC]'
                             : cIdx >= 2
-                              ? 'text-right font-mono-tabular text-[#0F172A]'
-                              : 'text-[#64748B]'
+                              ? 'text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]'
+                              : 'text-[#64748B] dark:text-[#94A3B8]'
                         }`}
                       >
                         {cell}
@@ -670,9 +670,9 @@ export function ScientificExperimentWorkspace() {
             </table>
           </div>
 
-          <div className="border-t border-[#E2E8F0] pt-3">
-            <p className="text-xs font-semibold text-[#0F172A]">Model Limitations &amp; Scope</p>
-            <ul className="mt-1.5 list-disc space-y-1 pl-5 text-xs text-[#64748B]">
+          <div className="border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
+            <p className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Model Limitations &amp; Scope</p>
+            <ul className="mt-1.5 list-disc space-y-1 pl-5 text-xs text-[#64748B] dark:text-[#94A3B8]">
               {result.limitations.map((lim, i) => (
                 <li key={i}>{lim}</li>
               ))}

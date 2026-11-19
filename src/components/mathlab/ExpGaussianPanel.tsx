@@ -72,9 +72,9 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
   return (
     <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
       {/* Left Matrix Editor & Playback Controls */}
-      <div className="space-y-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-4">
+      <div className="space-y-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-[#0F172A]">Augmented System [A | b]</h3>
+          <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Augmented System [A | b]</h3>
           <button
             type="button"
             onClick={() => {
@@ -83,7 +83,7 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
               setStepIdx(0);
               setPlaying(false);
             }}
-            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-medium text-[#2563EB] dark:text-[#60A5FA] hover:underline"
           >
             <RotateCcw className="h-3 w-3" />
             Reset
@@ -101,7 +101,7 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
                   value={val}
                   aria-label={`A row ${r + 1} col ${c + 1}`}
                   onChange={(e) => updateA(r, c, Number(e.target.value) || 0)}
-                  className="rounded-lg border border-[#E2E8F0] px-2 py-1.5 font-mono-tabular text-xs text-[#0F172A]"
+                  className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-2 py-1.5 font-mono-tabular text-xs text-[#0F172A] dark:text-[#F8FAFC]"
                 />
               ))}
               <input
@@ -110,7 +110,7 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
                 value={b[r]}
                 aria-label={`b row ${r + 1}`}
                 onChange={(e) => updateB(r, Number(e.target.value) || 0)}
-                className="rounded-lg border border-[#2563EB]/30 bg-[#EFF6FF]/40 px-2 py-1.5 font-mono-tabular text-xs font-semibold text-[#2563EB]"
+                className="rounded-lg border border-[#2563EB]/30 bg-[#EFF6FF]/40 dark:bg-[#60A5FA]/10 px-2 py-1.5 font-mono-tabular text-xs font-semibold text-[#2563EB] dark:text-[#60A5FA]"
               />
             </div>
           ))}
@@ -127,12 +127,12 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
             setVectorB([6, 12, 3]);
             setStepIdx(0);
           }}
-          className="w-full rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1.5 text-xs font-medium text-[#64748B] hover:text-[#0F172A]"
+          className="w-full rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] px-3 py-1.5 text-xs font-medium text-[#64748B] dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
         >
           Test Singular Matrix Detection
         </button>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] dark:border-[#334155] pt-3">
           <div className="flex items-center gap-1">
             <button
               type="button"
@@ -141,14 +141,14 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
                 setStepIdx((s) => Math.max(0, s - 1));
               }}
               aria-label="Previous step"
-              className="rounded border border-[#E2E8F0] p-1.5 text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="rounded border border-[#E2E8F0] dark:border-[#334155] p-1.5 text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               <StepBack className="h-3.5 w-3.5" />
             </button>
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="inline-flex items-center gap-1 rounded border border-[#E2E8F0] px-2.5 py-1 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="inline-flex items-center gap-1 rounded border border-[#E2E8F0] dark:border-[#334155] px-2.5 py-1 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
               {playing ? 'Pause' : 'Play'}
@@ -160,12 +160,12 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
                 setStepIdx((s) => Math.min(totalSteps - 1, s + 1));
               }}
               aria-label="Next step"
-              className="rounded border border-[#E2E8F0] p-1.5 text-[#0F172A] hover:bg-[#F8FAFC]"
+              className="rounded border border-[#E2E8F0] dark:border-[#334155] p-1.5 text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
             >
               <StepForward className="h-3.5 w-3.5" />
             </button>
           </div>
-          <span className="font-mono-tabular text-xs text-[#64748B]">
+          <span className="font-mono-tabular text-xs text-[#64748B] dark:text-[#94A3B8]">
             Step {clampedIdx + 1}/{totalSteps}
           </span>
         </div>
@@ -173,18 +173,18 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
         <button
           type="button"
           onClick={() => onExport('gaussian-elimination.json', result)}
-          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] px-3 py-1.5 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] px-3 py-1.5 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]"
         >
-          <Download className="h-3.5 w-3.5 text-[#2563EB]" />
+          <Download className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
           Export Elimination Trace
         </button>
       </div>
 
       {/* Center Formula & 3D Matrix Grid */}
       <div className="space-y-4 xl:col-span-8">
-        <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5">
+        <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="text-sm font-semibold text-[#0F172A]">
+            <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               1. Mathematical Formula — Partial Pivoting &amp; Row Reduction
             </h3>
             <StatusBadge
@@ -192,7 +192,7 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
               label={result.singular ? 'Singular Matrix' : `${result.swapCount} Pivot Swap(s)`}
             />
           </div>
-          <div className="mt-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+          <div className="mt-3 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-3">
             <KaTeXFormula
               displayMode
               tex="m_{ik} = \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}, \quad R_i \leftarrow R_i - m_{ik} R_k, \quad x_i = \frac{b_i^{(n)} - \sum_{j=i+1}^n a_{ij}^{(n)} x_j}{a_{ii}^{(n)}}"
@@ -216,8 +216,8 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
       </div>
 
       {/* Step-by-Step Log & Residual Validation */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-7">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-7">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           2. Step-by-Step Row Transformation Log
         </h3>
         <div className="mt-3 max-h-56 space-y-1.5 overflow-y-auto text-xs">
@@ -231,8 +231,8 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
               }}
               className={`flex w-full items-center justify-between rounded-lg border px-3 py-2 text-left transition-colors ${
                 s.stepIndex === clampedIdx
-                  ? 'border-[#2563EB] bg-[#2563EB]/6 text-[#0F172A]'
-                  : 'border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B] hover:bg-[#F8FAFC]'
+                  ? 'border-[#2563EB] dark:border-[#60A5FA] bg-[#2563EB]/6 text-[#0F172A] dark:text-[#F8FAFC]'
+                  : 'border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] text-[#64748B] dark:text-[#94A3B8] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B]'
               }`}
             >
               <span className="font-mono-tabular">{s.stepIndex + 1}. {s.description}</span>
@@ -241,33 +241,33 @@ export function ExpGaussianPanel({ datasetMode, precision, onExport }: Props) {
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 xl:col-span-5">
-        <h3 className="text-sm font-semibold text-[#0F172A]">
+      <div className="rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-5 xl:col-span-5">
+        <h3 className="text-sm font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
           4. Numerical Accuracy &amp; Residual Check
         </h3>
         {result.valid ? (
-          <dl className="mt-3 divide-y divide-[#E2E8F0] text-xs">
+          <dl className="mt-3 divide-y divide-[#E2E8F0] dark:divide-[#334155] text-xs">
             <div className="flex justify-between py-2">
-              <dt className="text-[#64748B]">Solution Vector x</dt>
-              <dd className="font-mono-tabular font-semibold text-[#2563EB]">
+              <dt className="text-[#64748B] dark:text-[#94A3B8]">Solution Vector x</dt>
+              <dd className="font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                 [{result.solution.map((v) => v.toFixed(precision)).join(', ')}]
               </dd>
             </div>
             <div className="flex justify-between py-2">
-              <dt className="text-[#64748B]">Euclidean Residual ||Ax - b||₂</dt>
-              <dd className="font-mono-tabular font-semibold text-[#10B981]">
+              <dt className="text-[#64748B] dark:text-[#94A3B8]">Euclidean Residual ||Ax - b||₂</dt>
+              <dd className="font-mono-tabular font-semibold text-[#10B981] dark:text-[#34D399]">
                 {result.residualL2Norm.toExponential(3)}
               </dd>
             </div>
             <div className="flex justify-between py-2">
-              <dt className="text-[#64748B]">Infinity Norm ||Ax - b||∞</dt>
-              <dd className="font-mono-tabular text-[#0F172A]">
+              <dt className="text-[#64748B] dark:text-[#94A3B8]">Infinity Norm ||Ax - b||∞</dt>
+              <dd className="font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                 {result.residualInfNorm.toExponential(3)}
               </dd>
             </div>
           </dl>
         ) : (
-          <p className="mt-3 text-xs font-medium text-rose-600">{result.error}</p>
+          <p className="mt-3 text-xs font-medium text-rose-600 dark:text-rose-400">{result.error}</p>
         )}
       </div>
     </div>

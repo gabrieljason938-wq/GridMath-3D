@@ -234,17 +234,17 @@ export function ReportsPage() {
   return (
     <div className="mx-auto max-w-[1200px] space-y-6">
       {/* Export & Benchmark Toolbar (hidden when printing to PDF) */}
-      <section className="no-print flex flex-wrap items-start justify-between gap-4 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6">
+      <section className="no-print flex flex-wrap items-start justify-between gap-4 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-6">
         <div className="max-w-2xl space-y-1">
-          <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
-            <span className="font-mono-tabular font-medium text-[#2563EB]">{SOFTWARE_VERSION}</span>
+          <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
+            <span className="font-mono-tabular font-medium text-[#2563EB] dark:text-[#60A5FA]">{SOFTWARE_VERSION}</span>
             <span aria-hidden="true">·</span>
             <span>Reproducible Capstone Manuscript &amp; Audits</span>
           </div>
-          <h2 className="text-lg font-semibold text-[#0F172A]">
+          <h2 className="text-lg font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             Academic Scientific Report Generator &amp; Reproducibility Exports
           </h2>
-          <p className="text-xs leading-relaxed text-[#64748B]">
+          <p className="text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
             Synthesizes verified outputs from all 8 scientific experiments, dataset quality audits, KaTeX mathematical derivations, and multi-period LP dispatch runs into a browser-printable academic PDF, CSV tables, and JSON reproducibility archives.
           </p>
         </div>
@@ -253,33 +253,33 @@ export function ReportsPage() {
           <button
             type="button"
             onClick={runAndPinAllExperiments}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
           >
-            <Play className="h-3.5 w-3.5 text-[#10B981]" />
+            <Play className="h-3.5 w-3.5 text-[#10B981] dark:text-[#34D399]" />
             Refresh All 8 Benchmarks
           </button>
           <button
             type="button"
             onClick={handleExportDispatchCsv}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
           >
-            <FileSpreadsheet className="h-3.5 w-3.5 text-[#2563EB]" />
+            <FileSpreadsheet className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
             24h Dispatch CSV
           </button>
           <button
             type="button"
             onClick={handleExportExperimentsCsv}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
           >
-            <Download className="h-3.5 w-3.5 text-[#06B6D4]" />
+            <Download className="h-3.5 w-3.5 text-[#06B6D4] dark:text-[#22D3EE]" />
             Experiments CSV
           </button>
           <button
             type="button"
             onClick={handleExportReproducibilityJson}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] px-3 text-xs font-medium text-[#0F172A] hover:bg-[#F8FAFC] whitespace-nowrap shrink-0"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] px-3 text-xs font-medium text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F8FAFC] dark:hover:bg-[#1E293B] whitespace-nowrap shrink-0"
           >
-            <Download className="h-3.5 w-3.5 text-[#2563EB]" />
+            <Download className="h-3.5 w-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
             Reproducibility JSON
           </button>
           <button
@@ -294,25 +294,25 @@ export function ReportsPage() {
       </section>
 
       {/* Printable Academic Capstone Manuscript */}
-      <article className="space-y-6 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 print:border-0 print:p-0">
+      <article className="space-y-6 rounded-xl border border-[#E2E8F0] dark:border-[#334155] bg-[#FFFFFF] dark:bg-[#172033] p-8 print:border-0 print:p-0">
         {/* 1. Title & Objective */}
-        <header className="border-b border-[#E2E8F0] pb-6 space-y-3">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#64748B]">
+        <header className="border-b border-[#E2E8F0] dark:border-[#334155] pb-6 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#64748B] dark:text-[#94A3B8]">
             <span>Engineering Capstone Technical Report · {SOFTWARE_VERSION}</span>
             <span className="font-mono-tabular">Generated: {new Date().toISOString()}</span>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#0F172A]">
+          <h1 className="text-2xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
             GRIDMATH 3D: Numerical Intelligence for Smart Grid Demand Forecasting and Optimal Energy Dispatch
           </h1>
-          <p className="text-sm leading-relaxed text-[#475569]">
-            <strong className="text-[#0F172A]">Objective:</strong> Formulate, verify, and benchmark an end-to-end deterministic numerical pipeline linking causal Householder QR electricity demand forecasting, high-order quadrature and conditioned linear system solvers, and Two-Phase Bounded Simplex multi-period optimal dispatch over a synchronized urban microgrid digital twin.
+          <p className="text-sm leading-relaxed text-[#475569] dark:text-[#94A3B8]">
+            <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Objective:</strong> Formulate, verify, and benchmark an end-to-end deterministic numerical pipeline linking causal Householder QR electricity demand forecasting, high-order quadrature and conditioned linear system solvers, and Two-Phase Bounded Simplex multi-period optimal dispatch over a synchronized urban microgrid digital twin.
           </p>
         </header>
 
         {/* 2. Research Integrity & Data Provenance Disclosure */}
         <section className="print-avoid-break space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className="text-base font-semibold text-[#0F172A]">
+            <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
               1. Research Integrity &amp; Data Provenance Classification
             </h2>
             <StatusBadge
@@ -326,80 +326,80 @@ export function ReportsPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 text-xs">
-            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-4 space-y-1.5">
-              <div className="font-semibold text-[#0F172A]">Synthetic vs. Real Data Boundaries</div>
-              <p className="text-[#64748B] leading-relaxed">
-                <strong className="text-[#0F172A]">Active Grid Scenario:</strong>{' '}
+            <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-4 space-y-1.5">
+              <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Synthetic vs. Real Data Boundaries</div>
+              <p className="text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Active Grid Scenario:</strong>{' '}
                 {activeScenario.name} ({activeScenario.isSynthetic ? 'Synthetic Urban Microgrid Baseline, INR Tariff' : 'Hybrid'}).
               </p>
-              <p className="text-[#64748B] leading-relaxed">
-                <strong className="text-[#0F172A]">Forecasting Time-Series:</strong>{' '}
+              <p className="text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Forecasting Time-Series:</strong>{' '}
                 {forecastDataset.isSynthetic
                   ? `Documented synthetic 14-day demonstration (${forecastDataset.records.length}h, ${forecastDataset.timezone}) — explicitly NOT presented as measured utility meter telemetry.`
                   : `User-uploaded CSV "${forecastDataset.datasetName}" (${forecastDataset.qualityReport.validRows} valid rows, ${forecastDataset.timezone}).`}
               </p>
             </div>
 
-            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-4 space-y-1.5">
-              <div className="font-semibold text-[#0F172A]">Assumptions, Precision &amp; Verified Outcomes</div>
-              <p className="text-[#64748B] leading-relaxed">
-                <strong className="text-[#0F172A]">Assumptions:</strong> Single-bus copper-plate substation balance, BESS round-trip efficiency 90% (<KaTeXFormula tex="\eta=0.90" />), linear cooling slope <KaTeXFormula tex="4.2\;\text{MW}/^\circ\text{C}" /> above 24 °C, and VOLL = ₹25,000/MWh.
+            <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-4 space-y-1.5">
+              <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">Assumptions, Precision &amp; Verified Outcomes</div>
+              <p className="text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Assumptions:</strong> Single-bus copper-plate substation balance, BESS round-trip efficiency 90% (<KaTeXFormula tex="\eta=0.90" />), linear cooling slope <KaTeXFormula tex="4.2\;\text{MW}/^\circ\text{C}" /> above 24 °C, and VOLL = ₹25,000/MWh.
               </p>
-              <p className="text-[#64748B] leading-relaxed">
-                <strong className="text-[#0F172A]">Precision:</strong> IEEE-754 float64 arithmetic (<KaTeXFormula tex="\varepsilon_{\text{mach}} \approx 2.22 \times 10^{-16}" />); every accuracy metric and solver residual below is directly measured from live execution.
+              <p className="text-[#64748B] dark:text-[#94A3B8] leading-relaxed">
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Precision:</strong> IEEE-754 float64 arithmetic (<KaTeXFormula tex="\varepsilon_{\text{mach}} \approx 2.22 \times 10^{-16}" />); every accuracy metric and solver residual below is directly measured from live execution.
               </p>
             </div>
           </div>
         </section>
 
         {/* 3. Dataset Description */}
-        <section className="print-avoid-break space-y-3 border-t border-[#E2E8F0] pt-5">
-          <h2 className="text-base font-semibold text-[#0F172A]">
+        <section className="print-avoid-break space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-5">
+          <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             2. Dataset Description &amp; Ingestion Quality Audit
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                   <th className="py-2 pr-4 font-medium">Audit Dimension</th>
                   <th className="py-2 pr-4 font-medium">Measured Value</th>
                   <th className="py-2 font-medium">Engineering Verification</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 <tr>
-                  <td className="py-2 pr-4 font-medium text-[#0F172A]">Forecast Dataset Window</td>
+                  <td className="py-2 pr-4 font-medium text-[#0F172A] dark:text-[#F8FAFC]">Forecast Dataset Window</td>
                   <td className="py-2 pr-4 font-mono-tabular">
                     {forecastDataset.qualityReport.validRows}/{forecastDataset.qualityReport.totalRawRows} rows ({forecastDataset.timezone})
                   </td>
-                  <td className="py-2 text-[#64748B]">
+                  <td className="py-2 text-[#64748B] dark:text-[#94A3B8]">
                     Missing: {forecastDataset.qualityReport.missingValueCount}, Duplicates: {forecastDataset.qualityReport.duplicateTimestampCount}, Invalid: {forecastDataset.qualityReport.invalidValueCount}
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium text-[#0F172A]">Chronological Train/Holdout Split</td>
+                  <td className="py-2 pr-4 font-medium text-[#0F172A] dark:text-[#F8FAFC]">Chronological Train/Holdout Split</td>
                   <td className="py-2 pr-4 font-mono-tabular">
                     {numericalForecast.trainCount}h train / {numericalForecast.holdoutCount}h holdout
                   </td>
-                  <td className="py-2 text-[#10B981]">
+                  <td className="py-2 text-[#10B981] dark:text-[#34D399]">
                     {numericalForecast.chronologicalVerified
                       ? 'Strict temporal separation verified (zero future leakage)'
                       : 'Check chronological ordering'}
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium text-[#0F172A]">Microgrid Peak / Energy</td>
+                  <td className="py-2 pr-4 font-medium text-[#0F172A] dark:text-[#F8FAFC]">Microgrid Peak / Energy</td>
                   <td className="py-2 pr-4 font-mono-tabular">
                     {daySummary.predictedPeakDemandMW.toFixed(2)} MW / {daySummary.totalDailyEnergyMWh.toFixed(1)} MWh
                   </td>
-                  <td className="py-2 text-[#64748B]">
+                  <td className="py-2 text-[#64748B] dark:text-[#94A3B8]">
                     Installed available capacity: {activeScenario.installedGenerationMW.toFixed(0)} MW + {activeScenario.batteryCapacityMWh} MWh BESS
                   </td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium text-[#0F172A]">Standardized Units</td>
+                  <td className="py-2 pr-4 font-medium text-[#0F172A] dark:text-[#F8FAFC]">Standardized Units</td>
                   <td className="py-2 pr-4 font-mono-tabular">MW · MWh · INR/MWh · tCO₂e</td>
-                  <td className="py-2 text-[#64748B]">
+                  <td className="py-2 text-[#64748B] dark:text-[#94A3B8]">
                     Weather overrides: ΔT={weatherControls.temperatureDeltaDegC >= 0 ? '+' : ''}
                     {weatherControls.temperatureDeltaDegC}°C, Solar={Math.round(weatherControls.solarIrradianceScale * 100)}%, Wind={Math.round(weatherControls.windResourceScale * 100)}%
                   </td>
@@ -410,33 +410,33 @@ export function ReportsPage() {
         </section>
 
         {/* 4. Mathematical Methodology & Formula Derivation */}
-        <section className="print-avoid-break space-y-3 border-t border-[#E2E8F0] pt-5">
-          <h2 className="text-base font-semibold text-[#0F172A]">
+        <section className="print-avoid-break space-y-3 border-t border-[#E2E8F0] dark:border-[#334155] pt-5">
+          <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             3. Mathematical Methodology &amp; Formula Derivation
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-4 space-y-2">
-              <div className="text-xs font-semibold text-[#0F172A]">
+            <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-4 space-y-2">
+              <div className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 A. Householder QR Load Regression
               </div>
               <KaTeXFormula
                 displayMode
                 tex="X = Q R \implies R\hat{\boldsymbol{\beta}} = Q^T \mathbf{y}, \quad \|Q^T Q - I\|_F = \mathcal{O}(\varepsilon_{\text{mach}})"
               />
-              <p className="text-[11px] text-[#64748B]">
+              <p className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                 Avoids <KaTeXFormula tex="\kappa(X)^2" /> conditioning loss of normal equations <KaTeXFormula tex="(X^TX)\boldsymbol{\beta}=X^T\mathbf{y}" /> using orthogonal Householder reflections over Fourier diurnal harmonics, temperature cooling degree terms, and 24-hour causal lags.
               </p>
             </div>
 
-            <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-4 space-y-2">
-              <div className="text-xs font-semibold text-[#0F172A]">
+            <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-4 space-y-2">
+              <div className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 B. Multi-Period Bounded Simplex Optimal Dispatch
               </div>
               <KaTeXFormula
                 displayMode
                 tex="\min \sum_{t=0}^{23}\!\left(\sum_i c_i P_{i,t} + c_{\text{deg}}(P_{\text{ch},t}+P_{\text{dis},t}) + c_{\text{CO}_2} E_t + \text{VOLL}\cdot u_t\right)"
               />
-              <p className="text-[11px] text-[#64748B]">
+              <p className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                 Subject to hourly power balance (<KaTeXFormula tex="\|A\mathbf{x}-\mathbf{b}\|_\infty < 10^{-2}" />), thermal ramp bounds <KaTeXFormula tex="|P_{i,t}-P_{i,t-1}|\le R_i" />, and BESS SoC dynamics <KaTeXFormula tex="E_{t+1} = E_t + \eta_c P_{\text{ch},t} - P_{\text{dis},t}/\eta_d" />.
               </p>
             </div>
@@ -444,36 +444,36 @@ export function ReportsPage() {
         </section>
 
         {/* 5. Numerical Solution & Worked Intermediate Tables */}
-        <section className="space-y-4 border-t border-[#E2E8F0] pt-5">
-          <h2 className="text-base font-semibold text-[#0F172A]">
+        <section className="space-y-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-5">
+          <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             4. Worked Numerical Solution &amp; Intermediate Calculation Tables
           </h2>
 
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             {/* Worked QR Substitution Table at active hour */}
             <div className="space-y-2 lg:col-span-5">
-              <div className="text-xs font-semibold text-[#0F172A]">
+              <div className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 A. Regression Term Substitution at Hour {numericalForecast.workedHour.toString().padStart(2, '0')}:00
               </div>
-              <div className="overflow-x-auto rounded-lg border border-[#E2E8F0]">
+              <div className="overflow-x-auto rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
                 <table className="w-full border-collapse text-right text-[11px] font-mono-tabular">
-                  <thead className="border-b border-[#E2E8F0] bg-[#F8FAFC] font-sans text-[#64748B]">
+                  <thead className="border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] font-sans text-[#64748B] dark:text-[#94A3B8]">
                     <tr>
                       <th className="px-2.5 py-1.5 text-left font-medium">Feature</th>
                       <th className="px-2 py-1.5 font-medium">β̂ⱼ</th>
                       <th className="px-2 py-1.5 font-medium">xⱼ</th>
-                      <th className="px-2.5 py-1.5 font-medium text-[#2563EB]">β̂ⱼ·xⱼ (MW)</th>
+                      <th className="px-2.5 py-1.5 font-medium text-[#2563EB] dark:text-[#60A5FA]">β̂ⱼ·xⱼ (MW)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E2E8F0]">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                     {numericalForecast.workedTerms.slice(0, 8).map((t) => (
                       <tr key={t.featureName}>
-                        <td className="px-2.5 py-1 text-left font-sans text-[#0F172A]">
+                        <td className="px-2.5 py-1 text-left font-sans text-[#0F172A] dark:text-[#F8FAFC]">
                           {t.featureName}
                         </td>
-                        <td className="px-2 py-1 text-[#64748B]">{t.beta.toFixed(2)}</td>
-                        <td className="px-2 py-1 text-[#0F172A]">{t.featureValue.toFixed(3)}</td>
-                        <td className="px-2.5 py-1 font-semibold text-[#2563EB]">
+                        <td className="px-2 py-1 text-[#64748B] dark:text-[#94A3B8]">{t.beta.toFixed(2)}</td>
+                        <td className="px-2 py-1 text-[#0F172A] dark:text-[#F8FAFC]">{t.featureValue.toFixed(3)}</td>
+                        <td className="px-2.5 py-1 font-semibold text-[#2563EB] dark:text-[#60A5FA]">
                           {t.contributionMW >= 0 ? '+' : ''}
                           {t.contributionMW.toFixed(2)}
                         </td>
@@ -482,21 +482,21 @@ export function ReportsPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="text-[11px] font-mono-tabular text-[#64748B]">
+              <div className="text-[11px] font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                 Predicted Sum D̂({numericalForecast.workedHour}) ={' '}
-                <strong className="text-[#0F172A]">{numericalForecast.workedPredictedMW.toFixed(2)} MW</strong>{' '}
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">{numericalForecast.workedPredictedMW.toFixed(2)} MW</strong>{' '}
                 · ||QᵀQ - I||_F = {numericalForecast.qrOrthogonalityError.toExponential(2)}
               </div>
             </div>
 
             {/* Sample 24h Optimal Dispatch Intermediate Schedule (6-hour intervals + active hour) */}
             <div className="space-y-2 lg:col-span-7">
-              <div className="text-xs font-semibold text-[#0F172A]">
+              <div className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 B. Optimal LP Dispatch Trajectory Sample (4-Hour Steps &amp; Active Hour {activeHour}:00)
               </div>
-              <div className="overflow-x-auto rounded-lg border border-[#E2E8F0]">
+              <div className="overflow-x-auto rounded-lg border border-[#E2E8F0] dark:border-[#334155]">
                 <table className="w-full border-collapse text-right text-[11px] font-mono-tabular">
-                  <thead className="border-b border-[#E2E8F0] bg-[#F8FAFC] font-sans text-[#64748B]">
+                  <thead className="border-b border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] font-sans text-[#64748B] dark:text-[#94A3B8]">
                     <tr>
                       <th className="px-2 py-1.5 text-left font-medium">Hour</th>
                       <th className="px-2 py-1.5 font-medium">Load (MW)</th>
@@ -507,7 +507,7 @@ export function ReportsPage() {
                       <th className="px-2 py-1.5 font-medium">Cost (INR)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E2E8F0]">
+                  <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                     {daySummary.hourlyDispatches
                       .filter((h) => h.hour % 4 === 0 || h.hour === activeHour || h.hour === 20)
                       .map((h) => {
@@ -515,15 +515,15 @@ export function ReportsPage() {
                         return (
                           <tr
                             key={h.hour}
-                            className={h.hour === activeHour ? 'bg-[#EFF6FF]/65 font-semibold' : ''}
+                            className={h.hour === activeHour ? 'bg-[#EFF6FF]/65 dark:bg-[#60A5FA]/15 font-semibold' : ''}
                           >
-                            <td className="px-2 py-1 text-left text-[#0F172A]">{h.timestampLabel}</td>
+                            <td className="px-2 py-1 text-left text-[#0F172A] dark:text-[#F8FAFC]">{h.timestampLabel}</td>
                             <td className="px-2 py-1">{h.totalDemandMW.toFixed(1)}</td>
-                            <td className="px-2 py-1 text-[#10B981]">
+                            <td className="px-2 py-1 text-[#10B981] dark:text-[#34D399]">
                               {h.renewableGenerationMW.toFixed(1)}
                             </td>
-                            <td className="px-2 py-1 text-[#64748B]">{thermalMW.toFixed(1)}</td>
-                            <td className="px-2 py-1 text-[#0891B2]">
+                            <td className="px-2 py-1 text-[#64748B] dark:text-[#94A3B8]">{thermalMW.toFixed(1)}</td>
+                            <td className="px-2 py-1 text-[#0891B2] dark:text-[#22D3EE]">
                               {h.batteryNetPowerMW >= 0 ? '+' : ''}
                               {h.batteryNetPowerMW.toFixed(1)}
                             </td>
@@ -535,7 +535,7 @@ export function ReportsPage() {
                   </tbody>
                 </table>
               </div>
-              <div className="text-[11px] font-mono-tabular text-[#64748B]">
+              <div className="text-[11px] font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                 Solver: {dispatchBundle.solverStatus.toUpperCase()} ({dispatchBundle.numVariables} vars,{' '}
                 {dispatchBundle.numConstraints} constraints, {dispatchBundle.simplexIterations} pivots) · Max Balance Residual:{' '}
                 {dispatchBundle.residualSummary.maxPowerBalanceResidualMW.toExponential(2)} MW
@@ -545,18 +545,18 @@ export function ReportsPage() {
         </section>
 
         {/* 6. Graphs & Fair Optimization Strategy Comparison */}
-        <section className="print-avoid-break space-y-4 border-t border-[#E2E8F0] pt-5">
-          <h2 className="text-base font-semibold text-[#0F172A]">
+        <section className="print-avoid-break space-y-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-5">
+          <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             5. Operational Dispatch Graph &amp; Fair Optimization Comparison
           </h2>
 
           {/* Print-Safe Inline SVG Chart */}
-          <div className="rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-4">
+          <div className="rounded-lg border border-[#E2E8F0] dark:border-[#334155] bg-[#F8FAFC] dark:bg-[#0B1220] p-4">
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <span className="font-semibold text-[#0F172A]">
+              <span className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                 24-Hour Optimal Supply, Demand &amp; Renewable Trajectory ({activeScenario.name})
               </span>
-              <div className="flex items-center gap-4 text-[11px] text-[#64748B]">
+              <div className="flex items-center gap-4 text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                 <span className="inline-flex items-center gap-1.5">
                   <span className="inline-block h-2 w-4 bg-[#0F172A]" /> Demand (MW)
                 </span>
@@ -584,7 +584,7 @@ export function ReportsPage() {
                       x2={chartGeom.width - chartGeom.padR}
                       y1={y}
                       y2={y}
-                      stroke="#E2E8F0"
+                      stroke="var(--border-hairline)"
                       strokeWidth="1"
                     />
                     <text
@@ -592,7 +592,7 @@ export function ReportsPage() {
                       y={y + 3}
                       textAnchor="end"
                       fontSize="10"
-                      fill="#64748B"
+                      fill="var(--text-secondary)"
                     >
                       {mw}
                     </text>
@@ -606,7 +606,7 @@ export function ReportsPage() {
                   y={chartGeom.height - 8}
                   textAnchor="middle"
                   fontSize="10"
-                  fill="#64748B"
+                  fill="var(--text-secondary)"
                 >
                   {String(h).padStart(2, '0')}:00
                 </text>
@@ -625,7 +625,7 @@ export function ReportsPage() {
               />
               <polyline
                 fill="none"
-                stroke="#0F172A"
+                stroke="var(--text-main)"
                 strokeWidth="2"
                 strokeDasharray="5 3"
                 points={chartGeom.demandPoly}
@@ -636,7 +636,7 @@ export function ReportsPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                   <th className="py-2 pr-4 font-medium">Dispatch Strategy (Identical Constraints)</th>
                   <th className="py-2 pr-4 text-right font-medium">24h Cost (INR)</th>
                   <th className="py-2 pr-4 text-right font-medium">Savings vs Thermal-First</th>
@@ -646,29 +646,29 @@ export function ReportsPage() {
                   <th className="py-2 text-right font-medium">Max Residual</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 {dispatchBundle.comparisons.map((c) => (
                   <tr
                     key={c.strategy}
-                    className={c.strategy === 'lp-optimal' ? 'bg-[#EFF6FF]/60 font-semibold' : ''}
+                    className={c.strategy === 'lp-optimal' ? 'bg-[#EFF6FF]/60 dark:bg-[#60A5FA]/15 font-semibold' : ''}
                   >
-                    <td className="py-2 pr-4 text-[#0F172A]">{c.label}</td>
+                    <td className="py-2 pr-4 text-[#0F172A] dark:text-[#F8FAFC]">{c.label}</td>
                     <td className="py-2 pr-4 text-right font-mono-tabular">
                       ₹{formatInr(c.totalCostInr)}
                     </td>
-                    <td className="py-2 pr-4 text-right font-mono-tabular text-[#10B981]">
+                    <td className="py-2 pr-4 text-right font-mono-tabular text-[#10B981] dark:text-[#34D399]">
                       {c.costSavingsVsThermalFirstPercent.toFixed(2)}%
                     </td>
                     <td className="py-2 pr-4 text-right font-mono-tabular">
                       {c.renewableContributionPercent.toFixed(2)}%
                     </td>
-                    <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B]">
+                    <td className="py-2 pr-4 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       {c.totalEmissionsTonnesCO2e.toFixed(2)}
                     </td>
                     <td className="py-2 pr-4 text-right font-mono-tabular">
                       {c.unservedEnergyMWh.toFixed(2)}
                     </td>
-                    <td className="py-2 text-right font-mono-tabular text-[#64748B]">
+                    <td className="py-2 text-right font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
                       {c.maxBalanceResidualMW.toExponential(2)} MW
                     </td>
                   </tr>
@@ -679,18 +679,18 @@ export function ReportsPage() {
         </section>
 
         {/* 7. 8-Experiment Scientific Benchmark Summary & Reproducibility Registry */}
-        <section className="space-y-4 border-t border-[#E2E8F0] pt-5">
-          <h2 className="text-base font-semibold text-[#0F172A]">
+        <section className="space-y-4 border-t border-[#E2E8F0] dark:border-[#334155] pt-5">
+          <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
             6. Accuracy Analysis &amp; 8-Experiment Reproducibility Registry
           </h2>
-          <p className="text-xs text-[#64748B]">
+          <p className="text-xs text-[#64748B] dark:text-[#94A3B8]">
             Every row below reflects an actual live execution of the corresponding Phase 7 experimental module with explicit algorithmic parameters, IEEE-754 tolerance, seed provenance, and measured execution time.
           </p>
 
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-xs">
               <thead>
-                <tr className="border-b border-[#E2E8F0] text-[#64748B]">
+                <tr className="border-b border-[#E2E8F0] dark:border-[#334155] text-[#64748B] dark:text-[#94A3B8]">
                   <th className="py-2 pr-3 font-medium">Code</th>
                   <th className="py-2 pr-3 font-medium">Experiment &amp; Algorithm</th>
                   <th className="py-2 pr-3 font-medium">Key Measured Outcomes</th>
@@ -698,27 +698,27 @@ export function ReportsPage() {
                   <th className="py-2 text-right font-medium">Latency</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E8F0]">
+              <tbody className="divide-y divide-[#E2E8F0] dark:divide-[#334155]">
                 {orderedExperiments.map((exp) => (
                   <tr key={exp.manifest.experimentId} className="align-top">
-                    <td className="py-2.5 pr-3 font-mono-tabular font-semibold text-[#2563EB] whitespace-nowrap">
+                    <td className="py-2.5 pr-3 font-mono-tabular font-semibold text-[#2563EB] dark:text-[#60A5FA] whitespace-nowrap">
                       {exp.manifest.experimentCode}
                     </td>
                     <td className="py-2.5 pr-3">
-                      <div className="font-semibold text-[#0F172A]">{exp.manifest.title}</div>
-                      <div className="text-[11px] text-[#64748B]">{exp.manifest.algorithmName}</div>
+                      <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">{exp.manifest.title}</div>
+                      <div className="text-[11px] text-[#64748B] dark:text-[#94A3B8]">{exp.manifest.algorithmName}</div>
                     </td>
-                    <td className="py-2.5 pr-3 font-mono-tabular text-[11px] text-[#0F172A]">
+                    <td className="py-2.5 pr-3 font-mono-tabular text-[11px] text-[#0F172A] dark:text-[#F8FAFC]">
                       {exp.summaryMetrics
                         .slice(0, 2)
                         .map((m) => `${m.label}: ${m.value}${m.unit ? ` ${m.unit}` : ''}`)
                         .join(' · ')}
                     </td>
-                    <td className="py-2.5 pr-3 text-[11px] text-[#64748B]">
+                    <td className="py-2.5 pr-3 text-[11px] text-[#64748B] dark:text-[#94A3B8]">
                       <div>{exp.manifest.numericalTolerance}</div>
                       <div className="font-mono-tabular">{exp.manifest.seedLabel}</div>
                     </td>
-                    <td className="py-2.5 text-right font-mono-tabular text-[#0F172A] whitespace-nowrap">
+                    <td className="py-2.5 text-right font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC] whitespace-nowrap">
                       {exp.manifest.computeMs.toFixed(2)} ms
                     </td>
                   </tr>
@@ -729,51 +729,51 @@ export function ReportsPage() {
         </section>
 
         {/* 8. Limitations & Conclusion */}
-        <section className="print-avoid-break grid grid-cols-1 gap-6 border-t border-[#E2E8F0] pt-5 md:grid-cols-2">
+        <section className="print-avoid-break grid grid-cols-1 gap-6 border-t border-[#E2E8F0] dark:border-[#334155] pt-5 md:grid-cols-2">
           <div className="space-y-2">
-            <h2 className="text-base font-semibold text-[#0F172A]">7. Methodological Limitations</h2>
-            <ul className="list-disc space-y-1.5 pl-5 text-xs leading-relaxed text-[#64748B]">
+            <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">7. Methodological Limitations</h2>
+            <ul className="list-disc space-y-1.5 pl-5 text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
               <li>
-                <strong className="text-[#0F172A]">Synthetic Grid Baseline:</strong> Unless an external telemetry CSV is uploaded, microgrid loads and INR tariffs reflect calibrated synthetic profiles rather than metered utility SCADA exports.
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Synthetic Grid Baseline:</strong> Unless an external telemetry CSV is uploaded, microgrid loads and INR tariffs reflect calibrated synthetic profiles rather than metered utility SCADA exports.
               </li>
               <li>
-                <strong className="text-[#0F172A]">Single-Bus LP Relaxation:</strong> Optimal dispatch enforces aggregate bus power balance, BESS state-of-charge dynamics, and thermal ramp bounds without AC optimal power flow (AC-OPF) reactive losses or binary startup variables.
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">Single-Bus LP Relaxation:</strong> Optimal dispatch enforces aggregate bus power balance, BESS state-of-charge dynamics, and thermal ramp bounds without AC optimal power flow (AC-OPF) reactive losses or binary startup variables.
               </li>
               <li>
-                <strong className="text-[#0F172A]">IEEE-754 Condition Limits:</strong> High-order Hilbert systems (<KaTeXFormula tex="n \ge 7" />) exhibit inherent forward error amplification regardless of partial pivoting due to finite 53-bit significand precision.
+                <strong className="text-[#0F172A] dark:text-[#F8FAFC]">IEEE-754 Condition Limits:</strong> High-order Hilbert systems (<KaTeXFormula tex="n \ge 7" />) exhibit inherent forward error amplification regardless of partial pivoting due to finite 53-bit significand precision.
               </li>
             </ul>
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-base font-semibold text-[#0F172A]">8. Capstone Conclusion</h2>
-            <p className="text-xs leading-relaxed text-[#64748B]">
-              Under scenario <strong className="text-[#0F172A]">{activeScenario.name}</strong>, the unified Householder QR + Bounded Simplex LP pipeline achieved a 24-hour dispatch cost of{' '}
-              <strong className="font-mono-tabular text-[#0F172A]">
+            <h2 className="text-base font-semibold text-[#0F172A] dark:text-[#F8FAFC]">8. Capstone Conclusion</h2>
+            <p className="text-xs leading-relaxed text-[#64748B] dark:text-[#94A3B8]">
+              Under scenario <strong className="text-[#0F172A] dark:text-[#F8FAFC]">{activeScenario.name}</strong>, the unified Householder QR + Bounded Simplex LP pipeline achieved a 24-hour dispatch cost of{' '}
+              <strong className="font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                 ₹{formatInr(lpComp?.totalCostInr ?? daySummary.totalDailyCostInr)}
               </strong>{' '}
               (saving{' '}
-              <strong className="font-mono-tabular text-[#10B981]">
+              <strong className="font-mono-tabular text-[#10B981] dark:text-[#34D399]">
                 {(lpComp?.costSavingsVsThermalFirstPercent ?? 0).toFixed(2)}%
               </strong>{' '}
               vs. thermal-first baseline and{' '}
-              <strong className="font-mono-tabular text-[#10B981]">
+              <strong className="font-mono-tabular text-[#10B981] dark:text-[#34D399]">
                 {((heurComp?.totalCostInr ?? 0) - (lpComp?.totalCostInr ?? 0) >= 0
                   ? ((lpComp?.costSavingsVsHeuristicPercent ?? 0).toFixed(2))
                   : '0.00')}
                 %
               </strong>{' '}
               vs. constrained heuristic at identical terminal SoC constraints, with{' '}
-              <strong className="font-mono-tabular text-[#0F172A]">
+              <strong className="font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                 {totalUnservedMWh.toFixed(2)} MWh
               </strong>{' '}
               unserved load and max nodal residual{' '}
-              <strong className="font-mono-tabular text-[#0F172A]">
+              <strong className="font-mono-tabular text-[#0F172A] dark:text-[#F8FAFC]">
                 {dispatchBundle.residualSummary.maxPowerBalanceResidualMW.toExponential(2)} MW
               </strong>
               ). By coupling verified numerical methods with transparent provenance and reproducible experiment manifests, GRIDMATH 3D establishes an auditable engineering benchmark for smart grid planning.
             </p>
-            <div className="pt-1 text-[11px] font-mono-tabular text-[#64748B]">
+            <div className="pt-1 text-[11px] font-mono-tabular text-[#64748B] dark:text-[#94A3B8]">
               Thermal-First Baseline: ₹{formatInr(tfComp?.totalCostInr ?? 0)} · Renewable Heuristic: ₹
               {formatInr(heurComp?.totalCostInr ?? 0)} · LP Optimal: ₹{formatInr(lpComp?.totalCostInr ?? 0)}
             </div>

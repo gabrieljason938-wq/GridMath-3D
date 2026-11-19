@@ -21,26 +21,28 @@ export function ToastContainer() {
               : Info;
         const iconColor =
           toast.tone === 'success'
-            ? 'text-[#10B981]'
+            ? 'text-[#10B981] dark:text-[#34D399]'
             : toast.tone === 'warning'
-              ? 'text-amber-600'
-              : 'text-[#2563EB]';
+              ? 'text-amber-600 dark:text-amber-400'
+              : 'text-[#2563EB] dark:text-[#60A5FA]';
 
         return (
           <div
             key={toast.id}
-            className="pointer-events-auto flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3.5 shadow-sm"
+            className="pointer-events-auto flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3.5 shadow-sm dark:border-[#334155] dark:bg-[#172033]"
           >
             <Icon className={`mt-0.5 h-4 w-4 shrink-0 ${iconColor}`} />
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold text-[#0F172A]">{toast.title}</p>
-              <p className="mt-0.5 text-xs text-[#64748B]">{toast.detail}</p>
+              <p className="text-xs font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
+                {toast.title}
+              </p>
+              <p className="mt-0.5 text-xs text-[#64748B] dark:text-[#94A3B8]">{toast.detail}</p>
             </div>
             <button
               type="button"
               onClick={() => dismissNotification(toast.id)}
               aria-label="Dismiss notification"
-              className="rounded p-1 text-[#64748B] transition-colors hover:bg-[#F8FAFC] hover:text-[#0F172A]"
+              className="rounded p-1 text-[#64748B] transition-colors hover:bg-[#F8FAFC] hover:text-[#0F172A] dark:text-[#94A3B8] dark:hover:bg-[#1E293B] dark:hover:text-[#F8FAFC]"
             >
               <X className="h-3.5 w-3.5" />
             </button>
